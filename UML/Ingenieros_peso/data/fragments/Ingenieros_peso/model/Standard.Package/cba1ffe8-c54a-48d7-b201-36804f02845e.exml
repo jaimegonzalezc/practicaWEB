@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="ingenieros_peso" version="4">
+  <OBJECT>
+    <ID name="ingenieros_peso" mc="Standard.Package" uid="cba1ffe8-c54a-48d7-b201-36804f02845e"/>
+    <PID name="Ingenieros_peso" mc="Standard.Project" uid="6bb6ebb8-e2dd-4de3-a119-f31b5200cc16"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[ingenieros_peso]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Empleado" mc="Standard.Actor" uid="236d7dd3-af29-4d8a-9844-bc1dd0a1bf32"/>
+        <COMPID name="Iniciar sesión" mc="Standard.UseCase" uid="5e7ecd7a-ae48-4c3e-a774-66142126ffaf"/>
+        <COMPID name="Fichar horas día anterior de cada proyecto" mc="Standard.UseCase" uid="4199e1f6-95e5-45ee-88cc-a4b588630e8f"/>
+        <COMPID name="Sistema" mc="Standard.Actor" uid="bd309ad5-aa60-4ec0-8c9d-7cfc5e9414df"/>
+        <COMPID name="Pedir días libres" mc="Standard.UseCase" uid="1d43eb59-7014-4a0d-a724-e38c9a5141f8"/>
+        <COMPID name="Horas libres por compromiso" mc="Standard.UseCase" uid="2f767f36-2366-4ec9-90d5-f05b411fd8e1"/>
+        <COMPID name="Pedir vacaciones" mc="Standard.UseCase" uid="21b1882a-a865-4fcd-a13c-88a500d7d584"/>
+        <COMPID name="Respuesta vacaciones" mc="Standard.UseCase" uid="279f03c6-53b0-4d84-90f0-d280112bc25c"/>
+        <COMPID name="Actualizar calendario" mc="Standard.UseCase" uid="473a23f0-f20b-4d5b-9516-a987184df0cc"/>
+        <COMPID name="Consultar calendario" mc="Standard.UseCase" uid="e5cdde50-d278-43fb-a5c7-ccff91a675a0"/>
+        <COMPID name="RRHH" mc="Standard.Actor" uid="ed46c311-a76b-42cd-9050-65aeb28275b1"/>
+        <COMPID name="Administrar BBDD" mc="Standard.UseCase" uid="9c6f9dc8-0103-4c78-9779-02a71c0de4c2"/>
+        <COMPID name="Empresas" mc="Standard.UseCase" uid="430f70b3-e9fe-4a4f-982a-d137ee47eccc"/>
+        <COMPID name="Proyectos" mc="Standard.UseCase" uid="ba24d1fb-1ad4-4d39-9aa1-76490a03f177"/>
+        <COMPID name="Empleados" mc="Standard.UseCase" uid="a03990f1-32fc-439d-b168-fcc18e08d30d"/>
+        <COMPID name="Calendario" mc="Standard.UseCase" uid="0a6dbefe-08e5-4feb-a915-5983aff31dc8"/>
+        <COMPID name="Solicitud vacaciones empleado" mc="Standard.UseCase" uid="30be3383-3619-48a6-a3df-3d028725e0b0"/>
+        <COMPID name="Pedir informes" mc="Standard.UseCase" uid="2384774e-516a-4016-b74e-4806fe8fbd46"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="empleados Use Case diagram" mc="Standard.UseCaseDiagram" uid="294f72cc-e359-41a5-9581-e75a2446e7c8"/>
+        <COMPID name="RRHH Use Case diagram" mc="Standard.UseCaseDiagram" uid="dce4a666-d734-4f65-bf86-e889a6a53b92"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
