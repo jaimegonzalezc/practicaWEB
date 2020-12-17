@@ -7,5 +7,27 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Descargas/javax.servlet.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Descargas/apache-log4j-2.14.0-bin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Descargas/apache-log4j-2.14.0-bin" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Descargas/apache-log4j-2.14.0-bin" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Descargas/apache-log4j-2.14.0-bin" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
