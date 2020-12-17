@@ -11,7 +11,7 @@ public class DbUtil {
     public static Connection getConnection() {
 
         String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://82.158.11.198:3306/userdb?useTimezone=true&serverTimezone=UTC";
+        String url = "jdbc:mysql://82.158.11.198:3306/mydb";
         String user = "root";
         String password = "TOCA$mela1";
         try {
@@ -20,9 +20,11 @@ public class DbUtil {
             e.printStackTrace();
         }
         try {
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection("jdbc:mysql://82.158.11.198:3306/mydb","root","TOCA$mela1");
+            System.out.println("Conectado");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            System.out.println("Error de conexión");
         }
         return connection;
     }
