@@ -1,5 +1,3 @@
-package com.company;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,8 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.company.User;
 
 public class UserDao {
 
@@ -35,6 +31,7 @@ public class UserDao {
         }
     }
 
+
     public void deleteUser(int userId) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("delete from users where userid=?");
@@ -42,10 +39,29 @@ public class UserDao {
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            Log.logdb.error("SQL Exception: " + e);
         }
     }
 
+    public String logInAuthentication(String userId, String pswd){
+        PreparedStatement preparedStatement = null;
+        String dniDB = "";
+        String passwordDB = "";
+        try {
+
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Usuarios where DNI=" + userId + ";");
+            while (rs.next()) {
+                dniDB = rs.getString("DNI");
+                passwordDB = rs.getString("contraseña");
+            }
+            if(pswd.equals(passwordDB)){
+                return "EXITO";
+            }
+        } catch (SQLException e) {
+        }
+        return "Credenciales erróneas";
+    }
+    /*
     public void updateUser(User user) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("update users set firstname=?, lastname=?, email=?" + "where userid=?");
@@ -60,7 +76,6 @@ public class UserDao {
         }
     }
 
-    /*
     public List<User> getAllUsers() {
         List<User> userdb = new ArrayList<User>();
         if (connection != null)
@@ -106,6 +121,6 @@ public class UserDao {
             Log.logdb.error("SQL Exception: " + e);
         }
         return user;
-    }
-    */
+    }*/
+
 }

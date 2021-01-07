@@ -1,5 +1,3 @@
-package com.company;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,15 +10,15 @@ public class DbUtil {
 
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://82.158.11.198:3306/mydb";
-        String user = "root";
-        String password = "TOCA$mela1";
+        String user = "newuser";
+        String password = "1234567890";
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://82.158.11.198:3306/mydb","root","TOCA$mela1");
+            connection = DriverManager.getConnection(url, user, password);
             System.out.println("Conectado");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
