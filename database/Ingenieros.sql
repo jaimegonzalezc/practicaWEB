@@ -49,7 +49,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Usuarios` (
-  `DNI` INT NOT NULL,
+  `DNI` VARCHAR(9) NOT NULL,
   `Nombre` VARCHAR(45) NULL,
   `Apellido` VARCHAR(45) NULL,
   `Telefono` INT NULL,
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Empleado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Empleado` (
-  `Usuarios_DNI` INT NOT NULL,
+  `Usuarios_DNI` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`Usuarios_DNI`),
   CONSTRAINT `fk_Empleados_Trabajadores1`
     FOREIGN KEY (`Usuarios_DNI`)
@@ -100,7 +100,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Empleados_estan_proyectos` (
   `Poyectos_idPoyectos` INT NOT NULL,
-  `Empleados_Trabajadores_DNI` INT NOT NULL,
+  `Empleados_Trabajadores_DNI` VARCHAR(9) NOT NULL,
   `Horas` INT NULL,
   PRIMARY KEY (`Poyectos_idPoyectos`, `Empleados_Trabajadores_DNI`),
   INDEX `fk_Trabajadores_estan_proyectos_Empleados1_idx` (`Empleados_Trabajadores_DNI` ASC) VISIBLE,
@@ -121,7 +121,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Recursos_humanos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Recursos_humanos` (
-  `Usuarios_DNI` INT NOT NULL,
+  `Usuarios_DNI` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`Usuarios_DNI`),
   CONSTRAINT `fk_Recursos_humanos_Usuarios1`
     FOREIGN KEY (`Usuarios_DNI`)
@@ -139,8 +139,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Calendario` (
   `FechaFin` DATETIME NULL,
   `Descripcion` VARCHAR(45) NULL,
   `Estado` CHAR(45) NULL,
-  `Empleado_Usuarios_DNI` INT NOT NULL,
-  `Recursos_humanos_Usuarios_DNI` INT NOT NULL,
+  `Empleado_Usuarios_DNI` VARCHAR(9) NOT NULL,
+  `Recursos_humanos_Usuarios_DNI` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`Empleado_Usuarios_DNI`, `Recursos_humanos_Usuarios_DNI`),
   INDEX `fk_Calendario_Empleado1_idx` (`Empleado_Usuarios_DNI` ASC) VISIBLE,
   INDEX `fk_Calendario_Recursos_humanos1_idx` (`Recursos_humanos_Usuarios_DNI` ASC) VISIBLE,
