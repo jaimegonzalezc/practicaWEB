@@ -13,7 +13,7 @@ public class DbUtil {
         String user = "root";
         String password = "TOCA$mela1";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(driver);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

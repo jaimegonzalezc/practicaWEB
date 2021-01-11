@@ -3,6 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Pattern;
 
 public class UserDao {
 
@@ -47,10 +48,13 @@ public class UserDao {
         try {
 
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Usuarios where DNI = '" + userId + "';");
-            while (rs.next()) {
-                dniDB = rs.getString("DNI");
-                passwordDB = rs.getString("contraseña");
+            String dniRegexp = "\\d{8}[A-HJ-NP-TV-Z]"; // Prevencion simple de SQL Injection
+            if (Pattern.matches(dniRegexp, userId)) {
+            	ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Usuarios where DNI = '" + userId + "';");            	
+            	while (rs.next()) {
+            		dniDB = rs.getString("DNI");
+            		passwordDB = rs.getString("contraseña");
+            	}
             }
             if(pswd.equals(passwordDB)){
                 return "EXITO";
