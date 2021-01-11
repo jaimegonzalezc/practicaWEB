@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Login")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     public LoginServlet() {
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,16 +21,17 @@ public class LoginServlet extends HttpServlet {
 		doGet(request, response);
 		String dni = request.getParameter("DNI");
         String password = request.getParameter("password");
-        UserDao dao = new UserDao(); //creating object for LoginDao. This class contains main logic of the application.
-
-        String userValidate = dao.logInAuthentication(dni, password); //Calling authenticateUser function
-
-        if(userValidate.equals("EXITO")) //If function returns success string then user will be rooted to Home page
+        UserDao dao = new UserDao(); 
+        String userValidate = dao.logInAuthentication(dni, password); 
+        System.out.println(dao.getUser(dni).getApellidos());
+        if(userValidate.equals("EXITO"))
         {
-        	response.sendRedirect("menu.jsp");
+        	request.setAttribute("DNI", dni); 
+            request.getRequestDispatcher("/menu.jsp").forward(request, response);
         }
         else {
-        	request.getRequestDispatcher("login.jsp").forward(request, response);
+        	request.setAttribute("errMessage", userValidate); 
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
 	}
 
