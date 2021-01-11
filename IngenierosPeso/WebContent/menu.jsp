@@ -12,10 +12,10 @@
   <title>Menú principal empleado</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/heroic-features.css" rel="stylesheet">
+  <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
