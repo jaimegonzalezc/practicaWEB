@@ -68,6 +68,7 @@ public class UserDao {
 		PreparedStatement preparedStatement = null;
 		String dniDB = "";
 		String passwordDB = "";
+		String depart ="";
 		try {
 
 			Statement statement = connection.createStatement();
@@ -77,10 +78,17 @@ public class UserDao {
 				while (rs.next()) {
 					dniDB = rs.getString("DNI");
 					passwordDB = rs.getString("Contraseña");
+					depart = rs.getString("Departamento");
+					
 				}
 			}
 			if (pswd.equals(passwordDB)) {
-				return "EXITO";
+				if(depart.equals("Recursos Humanos")) {
+					return "RRHH";
+				} else {
+					return "TEC";
+				}
+				
 			}
 		} catch (SQLException e) {
 		}
