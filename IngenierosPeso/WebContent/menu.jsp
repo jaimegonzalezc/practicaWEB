@@ -47,7 +47,7 @@ String nombre = (String) request.getAttribute("nombre");
 			<p class="lead">Desde este menú principal, podrás acceder a todas
 				las funcionalidades del sistema. Antes de nada, no olvides fichar
 				las horas trabajadas en cada proyecto el día anterior.</p>
-			<button class="btn btn-success" onClick="location.href='UsuarioServlet?action=getusuario&dni=<%=dni%>';" >Fichar horas
+			<button class="btn btn-success" onClick="location.href='TecnicoServlet?action=getusuario&dni=<%=dni%>';" >Fichar horas
 				del día anterior!</button>
 		</header>
 		<div class="row text-center">

@@ -7,17 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/UsuarioServlet")
-public class UsuarioServlet extends HttpServlet {
+@WebServlet("/TecnicoServlet")
+public class TecnicoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public UsuarioServlet() {
+    public TecnicoServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("olaaa");
 		String action = request.getParameter("action");
 		UserDao dao = new UserDao();
 		String dni = (String) request.getParameter("dni");
