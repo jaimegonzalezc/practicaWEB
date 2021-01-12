@@ -23,10 +23,11 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         UserDao dao = new UserDao(); 
         String userValidate = dao.logInAuthentication(dni, password); 
-        System.out.println(dao.getUser(dni).getApellidos());
-        if(userValidate.equals("EXITO"))
+		if(userValidate.equals("EXITO"))
         {
-        	request.setAttribute("DNI", dni); 
+	        User usuario = dao.getUser(dni);
+			request.setAttribute("nombre", usuario.getNombre()); 
+        	request.setAttribute("dni", dni); 
             request.getRequestDispatcher("/menu.jsp").forward(request, response);
         }
         else {

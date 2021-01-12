@@ -37,7 +37,6 @@
             <td>Contraseña</td>
             <td><input type="password" name="password" /></td>
         </tr>
-        <tr> <!-- refer to the video to understand request.getAttribute() -->
             <td><span style="color:#ff0000"><%=(request.getAttribute("errMessage") == null) ? ""
                     : request.getAttribute("errMessage")%></span></td>
         </tr>

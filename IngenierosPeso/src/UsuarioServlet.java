@@ -7,17 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/MenuServlet")
-public class MenuServlet extends HttpServlet {
+@WebServlet("/UsuarioServlet")
+public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public MenuServlet() {
+    public UsuarioServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("olaaa");
+		String action = request.getParameter("action");
+		UserDao dao = new UserDao();
+		String dni = (String) request.getParameter("dni");
+		if (action.equals("getusuario")) {
+			request.setAttribute("dni", dni); 
+            request.getRequestDispatcher("/ficharHoras.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -13,7 +13,10 @@
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
-
+<%
+String dni = (String) request.getAttribute("dni");
+String nombre = (String) request.getAttribute("nombre");
+%>
 </head>
 
 <body>
@@ -39,13 +42,13 @@
 
 	<div class="container">
 		<header class="jumbotron my-4">
-			<h1 class="display-3">Bienvenido empleado</h1>  <!-- Bootstrap core JavaScript -->
-			
+			<h1 class="display-3">Bienvenido <%=nombre%></h1>
+
 			<p class="lead">Desde este menú principal, podrás acceder a todas
 				las funcionalidades del sistema. Antes de nada, no olvides fichar
 				las horas trabajadas en cada proyecto el día anterior.</p>
-			<a href="#" class="btn btn-success btn-lg">Fichar horas del día
-				anterior!</a>
+			<button class="btn btn-success" onClick="location.href='UsuarioServlet?action=getusuario&dni=<%=dni%>';" >Fichar horas
+				del día anterior!</button>
 		</header>
 		<div class="row text-center">
 
