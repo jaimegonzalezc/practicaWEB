@@ -94,6 +94,9 @@ public class UserDao {
 		}
 		return "Credenciales erróneas";
 	}
+	
+	
+	 
 	/*
 	 * public void updateUser(User user) { try { PreparedStatement preparedStatement
 	 * = connection.
