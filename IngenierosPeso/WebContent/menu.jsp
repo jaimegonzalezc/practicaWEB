@@ -34,6 +34,8 @@ String nombre = (String) request.getAttribute("nombre");
 						href="menu.jsp">Home <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
+					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>
+
 					</li>
 				</ul>
 			</div>
@@ -42,13 +44,16 @@ String nombre = (String) request.getAttribute("nombre");
 
 	<div class="container">
 		<header class="jumbotron my-4">
-			<h1 class="display-3">Bienvenido <%=nombre%></h1>
+			<h1 class="display-3">
+				Bienvenido
+				<%=nombre%></h1>
 
 			<p class="lead">Desde este menú principal, podrás acceder a todas
 				las funcionalidades del sistema. Antes de nada, no olvides fichar
 				las horas trabajadas en cada proyecto el día anterior.</p>
-			<button class="btn btn-success" onClick="location.href='TecnicoServlet?action=getusuario&dni=<%=dni%>';" >Fichar horas
-				del día anterior!</button>
+			<button class="btn btn-success"
+				onClick="location.href='TecnicoServlet?action=getusuario&dni=<%=dni%>';">Fichar
+				horas del día anterior!</button>
 		</header>
 		<div class="row text-center">
 
