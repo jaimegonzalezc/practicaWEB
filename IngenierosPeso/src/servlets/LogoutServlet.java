@@ -1,3 +1,5 @@
+package servlets;
+
 
 
 import java.io.IOException;
@@ -11,14 +13,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class logoutServlet
  */
-@WebServlet("/Empresa")
-public class EmpresaServlet extends HttpServlet {
+@WebServlet("/Logout")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmpresaServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,24 +31,9 @@ public class EmpresaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String action = request.getParameter("action");
-		EmpresaDao dao = new EmpresaDao();
-		
-		if (action.equals("alta")) {
-			
-			String cif = (String) request.getParameter("CIF");
-			String nombre = (String) request.getParameter("nombre");
-			String direccion = (String) request.getParameter("direccion");
-			//int cp = (int) request.getParameter("CP").toString();
-			int hola = 0;
-			String ciudad = (String) request.getParameter("ciudad");
-			String provincia = (String) request.getParameter("provincia");
-			int pepe = 0;
-			Empresa empresa = new Empresa(cif,nombre,direccion,hola,ciudad,provincia,pepe);
-			dao.addEmpresa(empresa);
-			request.setAttribute("cif", cif);
-            request.getRequestDispatcher("empresas/gestionempresa.jsp").forward(request, response);
-		}
+		HttpSession session = request.getSession();
+		session.invalidate();
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
 	/**

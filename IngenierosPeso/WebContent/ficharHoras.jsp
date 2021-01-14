@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import='java.util.ArrayList, src.Proyecto'%>
+<%@page import='java.util.ArrayList, clases.Proyecto, util.ProyectoDao'%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -41,37 +41,32 @@ String nombre = (String) request.getAttribute("nombre");
 			</div>
 		</div>
 	</nav>
-	<table > 
-            <thead> 
-                <tr> 
-                    <th scope="col">User Id</th> 
-                    <th scope="col">Nombre</th> 
-                    <th scope="col">Apellido</th> 
-                    <th scope="col">DOB</th> 
-                    <th scope="col">Email</th> 
-                    <th  scope="col">Action</th> 
-                </tr> 
-            </thead> 
-            <tbody> 
-            <%
-            ProyectoDao proyectodao = new ProyectoDao();
-            ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
-            %>
-                <c:forEach items=<% %>var="user"> 
-                    <tr> 
-                        <td scope="row"><c:out value="${user.userid}" /></td>
-                        <td><c:out value="${user.firstName}" /></td> 
-                        <td><c:out value="${user.lastName}" /></td> 
-                        <td><fmt:formatDate pattern="dd-MM-yyyy" value="${user.dob}" /></td>
-                        <td><c:out value="${user.email}" /></td> 
-                        <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td> 
-                        <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td> 
-                    </tr> 
-                </c:forEach> 
-            </tbody> 
-        </table> 
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Is Proyecto</th>
+				<th scope="col">Descripcion</th>
+				<th scope="col">Horas dedicadas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<%
+				ProyectoDao proyectodao = new ProyectoDao();
+				ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
+				for (int i = 0; i < proys.size(); i++) {
+				%>
+				<th><%=proys.get(i).getIdProyecto()%></th>
+				<th><%=proys.get(i).getDescripcion()%></th>
+				<th><%=proyectodao.getHorasProy(dni, proys.get(i).getIdProyecto())%></th>
+				<%
+				}
+				%>
+			</tr>
+		</tbody>
+	</table>
 	<div class="row text-center">
-	
+
 		<div class="container">
 			<form action="TecnicoServlet">
 				<p>Introduzca el número de horas que ha dedicado al proyecto

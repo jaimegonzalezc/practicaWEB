@@ -1,3 +1,5 @@
+package servlets;
+
 
 
 import java.io.IOException;
@@ -8,17 +10,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ProyectoServlet")
-public class ProyectoServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import util.UserDao;
 
-    public ProyectoServlet() {
+@WebServlet("/TecnicoServlet")
+public class TecnicoServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+
+    public TecnicoServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String action = request.getParameter("action");
+		UserDao dao = new UserDao();
+		String dni = (String) request.getParameter("dni");
+		if (action.equals("getusuario")) {
+			request.setAttribute("dni", dni); 
+            request.getRequestDispatcher("/ficharHoras.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
