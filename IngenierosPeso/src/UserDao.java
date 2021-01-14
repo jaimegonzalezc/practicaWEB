@@ -1,5 +1,3 @@
-package util;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,64 +5,60 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.regex.Pattern;
 
-import clases.Empresa;
-
-public class EmpresaDao {
+public class UserDao {
 
 	private Connection connection;
 
-	public EmpresaDao() {
+	public UserDao() {
 		connection = DbUtil.getConnection();
 	}
 
-	public void addEmpresa(Empresa empresa) {
+	public void addUser(User user) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into Empresa (CIF,Nombre,Direccion,CP,Ciudad,Provincia,Telefono) values (?, ?, ?, ?, ?, ?, ?)");
+					"insert into Usuarios(DNI,Nombre,Apellido,Telefono,Correo,Contraseña,Departamento) values (?, ?, ?, ?, ?, ?, ?)");
 // Parameters start with 1
-			preparedStatement.setString(1, empresa.getCIF());
-			System.out.println(empresa.getCIF());
-			preparedStatement.setString(2, empresa.getNombre());
-			preparedStatement.setString(3, empresa.getDireccion());
-			preparedStatement.setInt(4, empresa.getCP());
-			preparedStatement.setString(5, empresa.getCiudad());
-			preparedStatement.setString(6, empresa.getProvincia());
-			preparedStatement.setInt(7, empresa.getNumero());
+			preparedStatement.setString(1, user.getDNI());
+			preparedStatement.setString(2, user.getNombre());
+			preparedStatement.setString(3, user.getApellidos());
+			preparedStatement.setInt(4, user.getNumero());
+			preparedStatement.setString(5, user.getCorreo());
+			preparedStatement.setString(6, user.getContrasena());
+			preparedStatement.setString(7, user.getDepartamento());
 			preparedStatement.executeUpdate();
-			preparedStatement.close();
 		} catch (SQLException e) {
 
 		}
 	}
 
-	public Empresa getEmpresa(String empresaId) {
+	public User getUser(String userId) {
 		PreparedStatement preparedStatement = null;
-		String cifDB, nombreDB, direccionDB, ciudadDB, provinciaDB;
-		int cpDB, numeroDB;
+		String dniDB, passwordDB, nombreDB, apellidoDB, correoDB, departamentoDB;
+		int numeroDB;
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Empresa where DNI = '" + empresaId + "';");
+			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Usuarios where DNI = '" + userId + "';");
 			while (rs.next()) {
-				cifDB = rs.getString("CIF");
+				dniDB = rs.getString("DNI");
 				nombreDB = rs.getString("Nombre");
-				cpDB = rs.getInt("CP");
+				apellidoDB = rs.getString("Apellido");
 				numeroDB = rs.getInt("Telefono");
-				ciudadDB = rs.getString("Correo");
-				provinciaDB = rs.getString("Contraseña");
-				direccionDB = rs.getString("Departamento");
-				Empresa empresa = new Empresa(cifDB, nombreDB, ciudadDB, cpDB, provinciaDB, direccionDB, numeroDB);
-				return empresa;
+				correoDB = rs.getString("Correo");
+				passwordDB = rs.getString("Contraseña");
+				departamentoDB = rs.getString("Departamento");
+				User usuario = new User(dniDB, nombreDB, apellidoDB, correoDB, passwordDB, departamentoDB, numeroDB);
+				return usuario;
 			}
 		} catch (SQLException e) {
 		}
 		return null;
 	}
 
-	public void deleteEmpresa(int empresaId) {
+	public void deleteUser(int userId) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("delete from Empresa where CIF=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("delete from users where userid=?");
 			// Parameters start with 1
-			preparedStatement.setInt(1, empresaId);
+			preparedStatement.setInt(1, userId);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 		}
@@ -100,6 +94,9 @@ public class EmpresaDao {
 		}
 		return "Credenciales erróneas";
 	}
+	
+	
+	 
 	/*
 	 * public void updateUser(User user) { try { PreparedStatement preparedStatement
 	 * = connection.

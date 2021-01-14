@@ -31,7 +31,7 @@
 						href="menu.jsp">Home <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-					<li class="nav-item"><a class="nav-link" href="/Logout">Logout</a>
+					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>
 					</li>
 				</ul>
 			</div>
