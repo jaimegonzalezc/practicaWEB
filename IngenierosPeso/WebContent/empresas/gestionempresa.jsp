@@ -10,9 +10,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Menú principal recursos humanos</title>
-<link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
+<link href="../menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="menuStyle/css/heroic-features.css" rel="stylesheet">
+<link href="../menuStyle/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
@@ -40,22 +40,22 @@
 
 	<div class="container">
 		<header class="jumbotron my-4">
-			<h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript -->
+			<!--  <h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript
 			
 			<p class="lead">Desde este menú principal, podrás gestionar todas
 				las funcionalidades del sistema.</p>
-			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>
-		</header>
+			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>-->
+		</header> 
 		<div class="row text-center">
 
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Atender peticiones de empleados</h4>
-						<p class="card-text">Aquí podrás gestionar las peticiones realizadas por los empleados.</p>
+						<h4 class="card-title">Añade empresas</h4>
+						<p class="card-text">Aquí podrás añadir nuevas empresas que haya contratado nuestro servicio.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Gestionar peticiones!</a>
+						<a href="altaempresa.jsp" class="btn btn-success">¡Alta nueva!</a>
 					</div>
 				</div>
 			</div>
@@ -63,11 +63,11 @@
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Empresas</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver la información de las empresas.</p>
+						<h4 class="card-title">Edita empresas</h4>
+						<p class="card-text">¿Han modificado su dirección?¿Tienen un nuevo número de contacto? Actualízalo</p>
 					</div>
 					<div class="card-footer">
-						<a href="empresas/gestionempresa.jsp" class="btn btn-success">Gestionar empresas!</a>
+						<a href="#" class="btn btn-success">¡Modifica datos!</a>
 					</div>
 				</div>
 			</div>
@@ -75,11 +75,11 @@
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Proyectos</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver la información de los proyectos.</p>
+						<h4 class="card-title">Borra empresas</h4>
+						<p class="card-text">Aquí podrás dar de baja a las empresas.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Gestionar proyectos!</a>
+						<a href="#" class="btn btn-success">¡Baja!</a>
 					</div>
 				</div>
 			</div>
