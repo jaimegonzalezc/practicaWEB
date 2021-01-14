@@ -1,3 +1,4 @@
+package clases;
 public class User {
     private String DNI;
     private String nombre;

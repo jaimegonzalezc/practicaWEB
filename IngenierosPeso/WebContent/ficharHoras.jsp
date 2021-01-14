@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import='java.util.ArrayList, src.Proyecto'%>
+<%@page import='java.util.ArrayList, clases.Proyecto, util.ProyectoDao'%>
 
 <!DOCTYPE html>
 <html lang="es">

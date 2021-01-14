@@ -1,3 +1,4 @@
+package clases;
 public class Empresa {
     private String CIF;
     private String nombre;

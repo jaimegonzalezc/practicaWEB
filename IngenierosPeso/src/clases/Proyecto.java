@@ -1,3 +1,4 @@
+package clases;
 
 public class Proyecto {
 	private int idProyecto;
