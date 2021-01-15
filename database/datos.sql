@@ -1,3 +1,5 @@
+
+-- Aqui se inicializan datos de empleados
 INSERT INTO usuarios VALUES ('27100634X', 'Antonio', 'Garcia', 916584234, 'antonio.garcia@gmail.com', 'garciaantonio1234', 'Tecnico'),
 ('20274811N', 'Antonio', 'Rodriguez', 916584235, 'antonio.rodriguez@gmail.com', 'rodriguezantonio1234', 'Recursos Humanos'),
 ('91728249V', 'Antonio', 'Gonzalez', 916584236, 'antonio.gonzalez@gmail.com', 'gonzalezantonio1234', 'Recursos Humanos'),
@@ -98,3 +100,87 @@ INSERT INTO usuarios VALUES ('27100634X', 'Antonio', 'Garcia', 916584234, 'anton
 ('60626019C', 'Francisco', 'Rodriguez', 916584331, 'francisco.rodriguez@gmail.com', 'rodriguezfrancisco1234', 'Recursos Humanos'),
 ('66804832K', 'Francisco', 'Gonzalez', 916584332, 'francisco.gonzalez@gmail.com', 'gonzalezfrancisco1234', 'Recursos Humanos'),
 ('78024326T', 'Francisco', 'Fernandez', 916584333, 'francisco.fernandez@gmail.com', 'fernandezfrancisco1234', 'Tecnico');
+
+
+-- Aqui se inicializan datos de empresas
+INSERT INTO empresa VALUES ('B86813110', '09 MICRAS SL', 'C/ Veronica, Numero 55, 21a', '28440', 'Guadarrama', 'Madrid', 902543210),
+('B86562311', '1 MAS 1 COMUNICACION SL', 'C/ Puenteareas 1 Esc.iz 1º 11', '28002', 'Madrid', 'Madrid', 902543211),
+('B86949401', '10 ATMOSFERAS ESTUDIO SL', 'C/ Fuencarral Numero 139, 4c', '28010', 'Madrid', 'Madrid', 902543212),
+('B84452978', '10 FOOT WORLD ESPAÑA SL', 'C/ San Juan De La Cruz 2', '28223', 'Pozuelo De Alarcon', 'Madrid', 902543213),
+('B87219895', '1LIFEOL SL', 'Paseo Conde De Los Gaitanes, 53 - Casa 2', '28109', 'Alcobendas', 'Madrid', 902543214),
+('B86904208', '2013 COMMONS SL', 'C/ Almanzora 26', '28023', 'Madrid', 'Madrid', 902543215);
+
+
+-- Aqui se inicializan datos de proyectos
+INSERT INTO poyectos VALUES (1, '2021-01-2 11:00:00', '2021-01-18 20:00:00', 'Descripcion del proyecto numero 1'),
+(2, '2021-01-2 10:00:00', '2021-01-8 19:00:00', 'Descripcion del proyecto numero 2'),
+(3, '2021-01-6 10:00:00', '2021-01-16 21:00:00', 'Descripcion del proyecto numero 3'),
+(4, '2021-01-1 11:00:00', '2021-01-14 20:00:00', 'Descripcion del proyecto numero 4'),
+(5, '2021-01-6 12:00:00', '2021-01-13 21:00:00', 'Descripcion del proyecto numero 5'),
+(6, '2021-01-3 11:00:00', '2021-01-22 21:00:00', 'Descripcion del proyecto numero 6');
+
+
+-- Aqui se inicializan datos de empresas en proyectos
+INSERT INTO empresa_tiene_proyectos VALUES ('B84452978', 1),
+('B86562311', 2),
+('B86813110', 3),
+('B86904208', 4),
+('B86949401', 5),
+('B87219895', 6);
+
+
+-- Aqui se inicializan datos de empleados en proyectos
+INSERT INTO empleados_estan_proyectos VALUES (6, '04736798V', 18),
+(6, '09192134T', 19),
+(5, '11048449P', 23),
+(4, '12467442Q', 0),
+(6, '14031482X', 23),
+(2, '14609728J', 4),
+(6, '16566487R', 1),
+(3, '24279390S', 0),
+(1, '27100634X', 2),
+(1, '29178375T', 10),
+(6, '29575254Z', 9),
+(5, '31397981Z', 18),
+(2, '34423305X', 22),
+(4, '34755255R', 3),
+(2, '36584871J', 15),
+(4, '42697238S', 13),
+(6, '43129384Z', 21),
+(2, '43448118Z', 15),
+(5, '48719030Q', 18),
+(2, '48762797Z', 3),
+(1, '52095501H', 4),
+(3, '55197048S', 5),
+(6, '56076979N', 20),
+(2, '61033398T', 24),
+(1, '64604119V', 6),
+(2, '65470411Z', 21),
+(4, '67751808H', 23),
+(3, '69235870M', 5),
+(2, '73299779K', 5),
+(2, '76117277L', 14),
+(5, '76150589G', 9),
+(5, '77799542H', 8),
+(4, '78024326T', 13),
+(2, '78414747L', 8),
+(2, '86678371L', 25),
+(3, '87695338H', 22),
+(1, '88571987E', 0),
+(3, '88582816H', 15),
+(2, '88696373R', 12),
+(5, '88773836T', 6),
+(6, '89112665Q', 7),
+(3, '90939505N', 16),
+(6, '92754069Z', 18),
+(2, '93770032K', 21),
+(3, '94172699G', 0),
+(2, '95984896P', 15),
+(1, '96073721F', 24),
+(5, '97429213V', 23),
+(1, '98451907Q', 11),
+(3, '99352482A', 18),
+(6, '99629091Z', 5);
+
+
+

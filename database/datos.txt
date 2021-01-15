@@ -1,2 +1,0 @@
-INSERT INTO Usuarios ('DNI', 'Nombre', 'Apellido', 'Telefono', 'Correo', 'Contraseña', 'Departamento') 
-values ('12345678', 'Daniel', 'Fernandez', '987654321', 'd.fernandez@gmail.com', 'dani123', 'Ventas')
