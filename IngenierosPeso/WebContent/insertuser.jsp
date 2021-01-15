@@ -9,11 +9,14 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Menú principal recursos humanos</title>
+<title>Menú principal empleado</title>
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
-
+<%
+String dni = (String) request.getAttribute("dni");
+String nombre = (String) request.getAttribute("nombre");
+%>
 </head>
 
 <body>
@@ -31,7 +34,6 @@
 						href="menu.jsp">Home <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -40,22 +42,35 @@
 
 	<div class="container">
 		<header class="jumbotron my-4">
-			<h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript -->
-			
-			<p class="lead">Desde este menú principal, podrás gestionar todas
-				las funcionalidades del sistema.</p>
-			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>
+			<h1 class="display-3">Da de alta a un nuevo empleado</h1>
+
+				
+			<form>
+				DNI : <input type="text" name="userid" value="<c:out value="${user.userid}" />" /> <br />  
+           		Nombre : <input type="text" name="firstName" value="<c:out value="${user.firstName}" />" /> <br /> 
+	            Apellido : <input type="text" name="lastName" value="<c:out value="${user.lastName}" />" /> <br />             
+	            Email : <input type="text" name="email" value="<c:out value="${user.email}" />" /> <br /> 
+            <input type="submit" value="Submit" /> 
+			</form>
+				
+				
+			<p class="lead">Desde este menú principal, podrás acceder a todas
+				las funcionalidades del sistema. Antes de nada, no olvides fichar
+				las horas trabajadas en cada proyecto el día anterior.</p>
+			<button class="btn btn-success" onClick="location.href='UsuarioServlet?action=getusuario&dni=<%=dni%>';" >Fichar horas
+				del día anterior!</button>
 		</header>
 		<div class="row text-center">
 
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Atender peticiones de empleados</h4>
-						<p class="card-text">Aquí podrás gestionar las peticiones realizadas por los empleados.</p>
+						<h4 class="card-title">Pedir días libres</h4>
+						<p class="card-text">Aquí podrás pedir días libres a los
+							responsables de Recursos Humanos.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Gestionar peticiones!</a>
+						<a href="#" class="btn btn-success">Pedir días libres!</a>
 					</div>
 				</div>
 			</div>
@@ -63,11 +78,12 @@
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Empresas</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver la información de las empresas.</p>
+						<h4 class="card-title">Consultar calendario.</h4>
+						<p class="card-text">Aquí podrás consultar tu calendario de
+							actividades.</p>
 					</div>
 					<div class="card-footer">
-						<a href="gestionempresa.jsp" class="btn btn-success">Gestionar empresas!</a>
+						<a href="#" class="btn btn-success">Consultar calendario!</a>
 					</div>
 				</div>
 			</div>
@@ -75,11 +91,12 @@
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Proyectos</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver la información de los proyectos.</p>
+						<h4 class="card-title">Pedir vacaciones</h4>
+						<p class="card-text">Aquí podrás realizar una solicitud de
+							vacaciones, que deberá ser tramitada por Recursos humanos.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Gestionar proyectos!</a>
+						<a href="#" class="btn btn-success">Pedir vacaciones!</a>
 					</div>
 				</div>
 			</div>
@@ -87,11 +104,12 @@
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Solicitar informe</h4>
-						<p class="card-text">Aquí podrás solicitar informes a la aplicación por empresa, proyectos y empleados.</p>
+						<h4 class="card-title">Horas libres por compromiso</h4>
+						<p class="card-text">Aquí podrás notificar la ausencia ciertas
+							horas del día por un motivo justificado.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Solicitar informe!</a>
+						<a href="#" class="btn btn-success">Notificar ausencia!</a>
 					</div>
 				</div>
 			</div>

@@ -44,7 +44,7 @@ String nombre = (String) request.getAttribute("nombre");
 	<table>
 		<thead>
 			<tr>
-				<th scope="col">Is Proyecto</th>
+				<th scope="col">Id Proyecto</th>
 				<th scope="col">Descripcion</th>
 				<th scope="col">Horas dedicadas</th>
 			</tr>

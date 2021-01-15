@@ -24,6 +24,7 @@ public class TecnicoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		UserDao dao = new UserDao();
+		
 		String dni = (String) request.getParameter("dni");
 		if (action.equals("getusuario")) {
 			request.setAttribute("dni", dni); 

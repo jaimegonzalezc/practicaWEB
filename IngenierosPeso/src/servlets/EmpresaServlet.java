@@ -1,8 +1,10 @@
 package servlets;
 
 
-
+import clases.Empresa;
+import util.EmpresaDao;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import clases.Empresa;
-import util.EmpresaDao;
+
 
 /**
  * Servlet implementation class logoutServlet
@@ -42,15 +43,13 @@ public class EmpresaServlet extends HttpServlet {
 			String cif = (String) request.getParameter("CIF");
 			String nombre = (String) request.getParameter("nombre");
 			String direccion = (String) request.getParameter("direccion");
-			//int cp = (int) request.getParameter("CP").toString();
-			int hola = 0;
+			int cp = Integer.getInteger(request.getParameter("CP"));
 			String ciudad = (String) request.getParameter("ciudad");
 			String provincia = (String) request.getParameter("provincia");
-			int pepe = 0;
-			Empresa empresa = new Empresa(cif,nombre,direccion,hola,ciudad,provincia,pepe);
+			int telefono = Integer.getInteger(request.getParameter("telefono"));
+			Empresa empresa = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
 			dao.addEmpresa(empresa);
-			request.setAttribute("cif", cif);
-            request.getRequestDispatcher("empresas/gestionempresa.jsp").forward(request, response);
+            request.getRequestDispatcher("gestionempresa.jsp").forward(request, response);
 		}
 	}
 

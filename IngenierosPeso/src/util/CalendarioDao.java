@@ -13,7 +13,7 @@ public class CalendarioDao {
 	private Connection connection;
 
 	public CalendarioDao() {
-		connection = DbUtil.getConnection();
+		//connection = DbUtil.getConnection();
 	}
 
 	public Calendario getCalendario(String userId) {

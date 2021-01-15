@@ -10,9 +10,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Menú principal recursos humanos</title>
-<link href="../menuStyle/vendor/bootstrap/css/bootstrap.min.css"
+<link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="../menuStyle/css/heroic-features.css" rel="stylesheet">
+<link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 
 </head>
 
