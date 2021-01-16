@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import clases.Empresa;
@@ -58,6 +59,38 @@ public class EmpresaDao {
 		} catch (SQLException e) {
 		}
 		return null;
+	}
+	
+	public ArrayList<Empresa> getTodasEmpresas() {
+		PreparedStatement preparedStatement = null;
+		ArrayList<Empresa> empr = new ArrayList<Empresa>();
+		String cifDB, nombreDB, direccionDB, ciudadDB, provinciaDB;
+		int cpDB, numeroDB;
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Empresa;");
+			
+			while (rs.next()) {
+				System.out.println(rs.getString("CIF"));
+				cifDB = rs.getString("CIF");
+				nombreDB = rs.getString("Nombre");
+				direccionDB = rs.getString("Direccion");
+				cpDB = rs.getInt("CP");
+				ciudadDB = rs.getString("Ciudad");
+				provinciaDB = rs.getString("Provincia");
+				numeroDB = rs.getInt("Telefono");
+				
+				System.out.println(cifDB);
+				/*Empresa empresa = new Empresa(rs.getString("CIF"), rs.getString("Nombre"), rs.getString("Direccion"),
+						rs.getInt("CP"), rs.getString("Ciudad"), rs.getString("Provincia"), rs.getInt("Telefono"));*/
+				Empresa empresa = new Empresa(cifDB,nombreDB,direccionDB,cpDB,ciudadDB,provinciaDB,numeroDB);
+				
+				empr.add(empresa);
+			}
+		} catch (SQLException e) {
+		}
+
+		return empr;
 	}
 
 	public void deleteEmpresa(int empresaId) {

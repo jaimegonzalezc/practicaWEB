@@ -67,7 +67,7 @@
 						<p class="card-text">¿Han modificado su dirección?¿Tienen un nuevo número de contacto? Actualízalo</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">¡Modifica datos!</a>
+						<a href="editaempresa.jsp" class="btn btn-success">¡Modifica datos!</a>
 					</div>
 				</div>
 			</div>
