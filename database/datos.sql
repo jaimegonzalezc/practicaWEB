@@ -1,6 +1,6 @@
 
 -- Aqui se inicializan datos de empleados
-INSERT INTO Usuarios VALUES ('27100634X', 'Antonio', 'Garcia', 916584234, 'antonio.garcia@gmail.com', 'garciaantonio1234', 'Tecnico'),
+INSERT INTO mydb.Usuarios VALUES ('27100634X', 'Antonio', 'Garcia', 916584234, 'antonio.garcia@gmail.com', 'garciaantonio1234', 'Tecnico'),
 ('20274811N', 'Antonio', 'Rodriguez', 916584235, 'antonio.rodriguez@gmail.com', 'rodriguezantonio1234', 'Recursos Humanos'),
 ('91728249V', 'Antonio', 'Gonzalez', 916584236, 'antonio.gonzalez@gmail.com', 'gonzalezantonio1234', 'Recursos Humanos'),
 ('48065756B', 'Antonio', 'Fernandez', 916584237, 'antonio.fernandez@gmail.com', 'fernandezantonio1234', 'Recursos Humanos'),

@@ -1,24 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import='java.util.ArrayList, clases.Proyecto, util.ProyectoDao'%>
+<%@page import='java.util.ArrayList, clases.Calendario, util.CalendarioDao'%>
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-
+<%
+String dni = (String) request.getAttribute("dni");
+String nombre = (String) request.getAttribute("nombre");
+%>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Fichar horas de proyectos</title>
+<title>Calendario de <%=nombre %></title>
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
-<%
-String dni = (String) request.getAttribute("dni");
-String nombre = (String) request.getAttribute("nombre");
-%>
+
 </head>
 
 <body>
@@ -32,53 +32,37 @@ String nombre = (String) request.getAttribute("nombre");
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link"
+					<li class="nav-item active">
+					<a class="nav-link"
 						href="menu.jsp">Home <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>
-					</ul>
+					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>		
+					</li>
+				</ul>
 			</div>
 		</div>
-	</
-				nav>
+	</nav>
 	<table>
 		<thead>
 			<tr>
-				<th scope="col">Id Proyecto</th>
-				<th scope="col">Descripcion</th>
-				<th scope="col">Horas dedicadas</th>
+				<th scope="col">Fecha de inicio</th>
+				<th scope="col">Fecha de fin</th>
+				<th scope="col">Descripción</th>
+				<th scope="col">Estado</th>
+				<th scope="col">Atendido por</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<%
-				ProyectoDao proyectodao = new ProyectoDao();
-				ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
-				for (int i = 0; i < proys.size(); i++) {
-				%>
-				<th><%=proys.get(i).getIdProyecto()%></th>
-				<th><%=proys.get(i).getDescripcion()%></th>
-				<th><%=proyectodao.getHorasProy(dni, proys.get(i).getIdProyecto())%></th>
-				<%
-				}
-				%>
+				<a href="menu.jsp" class="btn btn-success">Volver al menú</a>
 			</tr>
 		</tbody>
 	</table>
 	<div class="row text-center">
 
 		<div class="container">
-			<form action="TecnicoServlet">
-				<p>Introduzca el número de horas que ha dedicado al proyecto
-					elegido.</p>
-				<input type="time" name="hora" max="8:00:00" min="00:30:00" required>
-
-
-
-
-
-			</form>
+			
 
 		</div>
 	</div>
