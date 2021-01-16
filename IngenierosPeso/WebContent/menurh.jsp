@@ -13,7 +13,10 @@
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
-
+<%
+String dni = (String) request.getAttribute("dni");
+String nombre = (String) request.getAttribute("nombre");
+%>
 </head>
 
 <body>
@@ -40,8 +43,10 @@
 
 	<div class="container">
 		<header class="jumbotron my-4">
-			<h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript -->
-			
+			<h1 class="display-3">
+				Bienvenido
+				<%=nombre%></h1>
+
 			<p class="lead">Desde este menú principal, podrás gestionar todas
 				las funcionalidades del sistema.</p>
 			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>
@@ -52,7 +57,8 @@
 				<div class="card h-100">
 					<div class="card-body">
 						<h4 class="card-title">Atender peticiones de empleados</h4>
-						<p class="card-text">Aquí podrás gestionar las peticiones realizadas por los empleados.</p>
+						<p class="card-text">Aquí podrás gestionar las peticiones
+							realizadas por los empleados.</p>
 					</div>
 					<div class="card-footer">
 						<a href="#" class="btn btn-success">Gestionar peticiones!</a>
@@ -64,10 +70,12 @@
 				<div class="card h-100">
 					<div class="card-body">
 						<h4 class="card-title">Empresas</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver la información de las empresas.</p>
+						<p class="card-text">Aquí podrás actualizar, modificar y ver
+							la información de las empresas.</p>
 					</div>
 					<div class="card-footer">
-						<a href="gestionempresa.jsp" class="btn btn-success">Gestionar empresas!</a>
+						<a href="gestionempresa.jsp" class="btn btn-success">Gestionar
+							empresas!</a>
 					</div>
 				</div>
 			</div>
@@ -76,7 +84,8 @@
 				<div class="card h-100">
 					<div class="card-body">
 						<h4 class="card-title">Proyectos</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver la información de los proyectos.</p>
+						<p class="card-text">Aquí podrás actualizar, modificar y ver
+							la información de los proyectos.</p>
 					</div>
 					<div class="card-footer">
 						<a href="#" class="btn btn-success">Gestionar proyectos!</a>
@@ -88,7 +97,8 @@
 				<div class="card h-100">
 					<div class="card-body">
 						<h4 class="card-title">Solicitar informe</h4>
-						<p class="card-text">Aquí podrás solicitar informes a la aplicación por empresa, proyectos y empleados.</p>
+						<p class="card-text">Aquí podrás solicitar informes a la
+							aplicación por empresa, proyectos y empleados.</p>
 					</div>
 					<div class="card-footer">
 						<a href="#" class="btn btn-success">Solicitar informe!</a>
