@@ -41,7 +41,7 @@ String nombre = (String) request.getAttribute("nombre");
 			</div>
 		</div>
 	</nav>
-	<table>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th scope="col">Id Proyecto</th>
@@ -54,8 +54,6 @@ String nombre = (String) request.getAttribute("nombre");
 				<%
 				ProyectoDao proyectodao = new ProyectoDao();
 				ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
-				System.out.println("Id: " + proys.get(0).getIdProyecto());
-				System.out.println("hola ke ase");
 				for (int i = 0; i < proys.size(); i++) {
 				%>
 				<td><%= proys.get(0).getIdProyecto() %></td>
