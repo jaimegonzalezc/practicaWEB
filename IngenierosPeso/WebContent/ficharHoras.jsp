@@ -40,8 +40,7 @@ String nombre = (String) request.getAttribute("nombre");
 					</ul>
 			</div>
 		</div>
-	</
-				nav>
+	</nav>
 	<table>
 		<thead>
 			<tr>
@@ -55,11 +54,13 @@ String nombre = (String) request.getAttribute("nombre");
 				<%
 				ProyectoDao proyectodao = new ProyectoDao();
 				ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
+				System.out.println("Id: " + proys.get(0).getIdProyecto());
+				System.out.println("hola ke ase");
 				for (int i = 0; i < proys.size(); i++) {
 				%>
-				<th><%=proys.get(i).getIdProyecto()%></th>
-				<th><%=proys.get(i).getDescripcion()%></th>
-				<th><%=proyectodao.getHorasProy(dni, proys.get(i).getIdProyecto())%></th>
+				<td><%= proys.get(0).getIdProyecto() %></td>
+				<td><%= proys.get(0).getDescripcion() %></td>
+				<td><%= proyectodao.getHorasProy(dni, proys.get(0).getIdProyecto()) %></td>
 				<%
 				}
 				%>
