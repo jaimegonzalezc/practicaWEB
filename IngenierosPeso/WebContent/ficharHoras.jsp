@@ -73,10 +73,6 @@ String nombre = (String) request.getAttribute("nombre");
 					elegido.</p>
 				<input type="time" name="hora" max="8:00:00" min="00:30:00" required>
 
-
-
-
-
 			</form>
 
 		</div>

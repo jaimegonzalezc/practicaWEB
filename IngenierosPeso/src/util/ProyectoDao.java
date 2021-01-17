@@ -1,11 +1,13 @@
 package util;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import clases.Empresa;
 import clases.Proyecto;
 
 public class ProyectoDao {
@@ -13,9 +15,27 @@ public class ProyectoDao {
 	private Connection connection;
 
 	public ProyectoDao() {
+		System.out.println("holas");
 		connection = DbUtil.getConnection();
 	}
 
+	public void addProyecto(Proyecto proyecto) {
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"insert into Empresa (idProyectos,FechaIni,FechaFin,Descripcion) values (?, ?, ?, ?)");
+// Parameters start with 1
+			preparedStatement.setInt(1, proyecto.getIdProyecto());
+			preparedStatement.setString(2, proyecto.getFechaIni());
+			preparedStatement.setString(3, proyecto.getFechaFin());
+			preparedStatement.setString(4, proyecto.getDescripcion());
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+		} catch (SQLException e) {
+
+		}
+	}
+	
+	
 	public ArrayList<Proyecto> listProyectos(String dniUsuario) {
 		ArrayList<Proyecto> lista = new ArrayList<Proyecto>();
 		int idProy;
@@ -70,20 +90,6 @@ public class ProyectoDao {
 		} catch (SQLException e) {
 		}
 		return null;
-	}
-	
-	public void updateHoras (String dniEmpleado, String idProy, int horas) {
-		int horasAnteriores;
-		try {
-			Statement statement = connection.createStatement();
-			System.out.println(dniEmpleado);
-			System.out.println(idProy);
-			System.out.println(horas);
-			ResultSet rs = statement.executeQuery("UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + 
-			horas + "WHERE (Poyectos_idPoyectos = " + idProy + ") and (Empleados_Trabajadores_DNI = '" + dniEmpleado + "');");
-		} catch (SQLException e) {
-			System.out.println("Cagada shurmano");
-		}
 	}
 
 }

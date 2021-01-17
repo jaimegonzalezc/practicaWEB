@@ -88,7 +88,7 @@ String nombre = (String) request.getAttribute("nombre");
 							la información de los proyectos.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Gestionar proyectos!</a>
+						<a href="gestionproyectos.jsp" class="btn btn-success">Gestionar proyectos!</a>
 					</div>
 				</div>
 			</div>

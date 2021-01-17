@@ -19,11 +19,11 @@
 <div class="container">
 		<header class="jumbotron my-4">
 			<h1 class="display-3">Da de alta un nuevo proyecto</h1>
-<form name="form" action="../Proyecto?action=alta" method="post" onsubmit="return validate()">
-	idProyecto: <input type="text" name="idProyecto"><br>
-	FechaIni: <input type="datetime" name="Fecha de inicio"><br>
-	FechaFin: <input type="text" name="Fecha de finalización"><br>
-	Descripcion: <input type="text" name="Descripción del proyecto"><br>
+<form name="form" action="ProyectoServlet?action=alta" method="post" onsubmit="return validate()">
+	idProyecto: <input type="text" name="id"><br>
+	FechaIni: <input type="text" name="FI"><br>
+	FechaFin: <input type="text" name="FF"><br>
+	Descripcion: <input type="text" name="Descr"><br>
 	<input type="submit" value="¡Alta!">
 </form>
 </header>

@@ -31,34 +31,43 @@ String nombre = (String) request.getAttribute("nombre");
 	        var ciudad = document.getElementById("ciudad");
 	        var provincia = document.getElementById("provincia");
 	        var telefono = document.getElementById("telefono");
-	        cif.disabled = edita.checked ? false : true;
+/* 	        cif.disabled = edita.checked ? false : true;
 	        nombre.disabled = edita.checked ? false : true;
 	        direccion.disabled = edita.checked ? false : true;
 	        cp.disabled = edita.checked ? false : true;
 	        ciudad.disabled = edita.checked ? false : true;
 	        provincia.disabled = edita.checked ? false : true;
-	        telefono.disabled = edita.checked ? false : true;
-	        if (!cif.disabled) {
-	            cif.focus();
+	        telefono.disabled = edita.checked ? false : true; */
+	        
+	        if(edita.checked){
+	        	if (!cif.disabled) {
+		            cif.focus();
+		        }
+		        if (!nombre.disabled) {
+		            nombre.focus();
+		        }
+		        if (!direccion.disabled) {
+		            direccion.focus();
+		        }
+		        if (!cp.disabled) {
+		            cp.focus();
+		        }
+		        if (!ciudad.disabled) {
+		            ciudad.focus();
+		        }
+		        if (!provincia.disabled) {
+		            provincia.focus();
+		        }
+		        if (!telefono.disabled) {
+		            telefono.focus();
+		        }
+	        } else {
+	        	<%
+	        	
+	        	%>
 	        }
-	        if (!nombre.disabled) {
-	            nombre.focus();
-	        }
-	        if (!direccion.disabled) {
-	            direccion.focus();
-	        }
-	        if (!cp.disabled) {
-	            cp.focus();
-	        }
-	        if (!ciudad.disabled) {
-	            ciudad.focus();
-	        }
-	        if (!provincia.disabled) {
-	            provincia.focus();
-	        }
-	        if (!telefono.disabled) {
-	            telefono.focus();
-	        }
+	        
+	        
 	    }
 	</script>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -83,6 +92,7 @@ String nombre = (String) request.getAttribute("nombre");
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th scope="col">Nº</th>
 				<th scope="col">CIF</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Direccion</th>
@@ -96,9 +106,11 @@ String nombre = (String) request.getAttribute("nombre");
 				<%
 				EmpresaDao emprdao = new EmpresaDao();
 				ArrayList<Empresa> empr = emprdao.getTodasEmpresas();
+				int numero=1;
 				for (int i = 0; i < empr.size(); i++) {
 				%>
 				<tr>
+				<td><%= numero++ %> </td>
 				<td><input type="text" disabled="disabled" id="cif" value="<%= empr.get(i).getCIF() %>"></td>
 				<td><input type="text" disabled="disabled" id="nombre" value="<%= empr.get(i).getNombre() %>"></td>
 				<td><input type="text" disabled="disabled" id="direccion" value="<%= empr.get(i).getDireccion() %>"></td>
@@ -111,6 +123,9 @@ String nombre = (String) request.getAttribute("nombre");
 						<input type="checkbox" id="edita" onclick="EnableDisableTextBox(this)">
 					</label>
 				</td>
+				<td>
+					<input type="button" value="Eliminar" onclick="location.href='Empresa?action=elimina&CIF=<%= empr.get(i).getCIF() %>';">
+				</td>
 				<tr>
 				<%
 				}
@@ -120,16 +135,7 @@ String nombre = (String) request.getAttribute("nombre");
 	<div class="row text-center">
 
 		<div class="container">
-			<form action="TecnicoServlet">
-				<p>Introduzca el número de horas que ha dedicado al proyecto
-					elegido.</p>
-				<input type="time" name="hora" max="8:00:00" min="00:30:00" required>
 
-
-
-
-
-			</form>
 
 		</div>
 	</div>

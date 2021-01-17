@@ -84,17 +84,6 @@
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 mb-4">
-				<div class="card h-100">
-					<div class="card-body">
-						<h4 class="card-title">Solicitar informe</h4>
-						<p class="card-text">Aquí podrás solicitar informes a la aplicación por empresa, proyectos y empleados.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-success">Solicitar informe!</a>
-					</div>
-				</div>
-			</div>
 
 		</div>
 

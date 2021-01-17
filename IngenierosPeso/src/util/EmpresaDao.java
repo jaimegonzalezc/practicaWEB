@@ -87,11 +87,11 @@ public class EmpresaDao {
 		return empr;
 	}
 
-	public void deleteEmpresa(int empresaId) {
+	public void deleteEmpresa(String empresaId) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("delete from Empresa where CIF=?");
 			// Parameters start with 1
-			preparedStatement.setInt(1, empresaId);
+			preparedStatement.setString(1, empresaId);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 		}
