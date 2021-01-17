@@ -55,6 +55,16 @@ public class EmpresaServlet extends HttpServlet {
 		} else if(action.equals("elimina")) {
 			dao.deleteEmpresa(cif);
 			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
+		} else if(action.equals("editar")) {
+			String nombre = (String) request.getParameter("nombre");
+			String direccion = (String) request.getParameter("direccion");
+			int cp = Integer.parseInt(request.getParameter("CP"));
+			String ciudad = (String) request.getParameter("ciudad");
+			String provincia = (String) request.getParameter("provincia");
+			int telefono = Integer.parseInt(request.getParameter("telefono"));
+			Empresa empr = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
+			dao.actualizaEmpresa(empr);
+			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
 		}
 	}
 

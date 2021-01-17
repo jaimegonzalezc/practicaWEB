@@ -50,21 +50,19 @@ String nombre = (String) request.getAttribute("nombre");
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
 				<%
 				ProyectoDao proyectodao = new ProyectoDao();
 				ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
 				for (int i = 0; i < proys.size(); i++) {
 				%>
-
-				<td><%=proys.get(i).getIdProyecto()%></td>
-				<td><%=proys.get(i).getDescripcion()%></td>
-				<td><%=proyectodao.getHorasProy(dni, proys.get(i).getIdProyecto())%></td>
-			<tr>
+				<tr>
+				<td><%= proys.get(i).getIdProyecto() %></td>
+				<td><%= proys.get(i).getDescripcion() %></td>
+				<td><%= proyectodao.getHorasProy(dni, proys.get(i).getIdProyecto()) %></td>
+				<tr>
 				<%
 				}
 				%>
-			
 		</tbody>
 	</table>
 	<div class="row text-center">

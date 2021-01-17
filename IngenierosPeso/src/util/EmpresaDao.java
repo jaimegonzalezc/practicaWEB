@@ -49,12 +49,24 @@ public class EmpresaDao {
 				nombreDB = rs.getString("Nombre");
 				cpDB = rs.getInt("CP");
 				numeroDB = rs.getInt("Telefono");
-				ciudadDB = rs.getString("Correo");
-				provinciaDB = rs.getString("Contraseña");
-				direccionDB = rs.getString("Departamento");
-				Empresa empresa = new Empresa(cifDB, nombreDB, ciudadDB, cpDB, provinciaDB, direccionDB, numeroDB);
+				ciudadDB = rs.getString("Ciudad");
+				provinciaDB = rs.getString("Provincia");
+				direccionDB = rs.getString("Direccion");
+				Empresa empresa = new Empresa(cifDB, nombreDB, direccionDB, cpDB, ciudadDB, provinciaDB, numeroDB);
 				return empresa;
 			}
+		} catch (SQLException e) {
+		}
+		return null;
+	}
+	
+	public Empresa actualizaEmpresa(Empresa empr) {
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("UPDATE mydb.Empresa SET Nombre='"+empr.getNombre() +"'"
+					+ ", Direccion='"+empr.getDireccion()+"', CP='"+empr.getCP()+"', Ciudad='"+empr.getCiudad()+"',"
+							+ "Provincia='"+empr.getProvincia()+"', Telefono='"+empr.getNumero()+"' where CIF = '" + empr.getCIF() + "';");
+			return empr;
 		} catch (SQLException e) {
 		}
 		return null;

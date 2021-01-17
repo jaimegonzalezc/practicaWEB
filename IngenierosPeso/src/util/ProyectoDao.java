@@ -21,7 +21,6 @@ public class ProyectoDao {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"insert into Empresa (idProyectos,FechaIni,FechaFin,Descripcion) values (?, ?, ?, ?)");
-// Parameters start with 1
 			preparedStatement.setInt(1, proyecto.getIdProyecto());
 			preparedStatement.setString(2, proyecto.getFechaIni());
 			preparedStatement.setString(3, proyecto.getFechaFin());
@@ -32,7 +31,7 @@ public class ProyectoDao {
 
 		}
 	}
-
+	
 	public ArrayList<Proyecto> listProyectos(String dniUsuario) {
 		ArrayList<Proyecto> lista = new ArrayList<Proyecto>();
 		int idProy;
@@ -88,7 +87,7 @@ public class ProyectoDao {
 		}
 		return null;
 	}
-
+	
 	public void updateHoras(String dniEmpleado, int idProy, int horas) {
 
 		try {

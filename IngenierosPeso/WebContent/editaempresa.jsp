@@ -24,6 +24,7 @@ String nombre = (String) request.getAttribute("nombre");
 <body>
 	<script type="text/javascript">
 		function EnableDisableTextBox(edita) {
+			var elimina = document.getElementById("elimina");
 	        var cif = document.getElementById("cif");
 	        var nombre = document.getElementById("nombre");
 	        var direccion = document.getElementById("direccion");
@@ -31,42 +32,39 @@ String nombre = (String) request.getAttribute("nombre");
 	        var ciudad = document.getElementById("ciudad");
 	        var provincia = document.getElementById("provincia");
 	        var telefono = document.getElementById("telefono");
-/* 	        cif.disabled = edita.checked ? false : true;
+ 	        cif.disabled = edita.checked ? false : true;
 	        nombre.disabled = edita.checked ? false : true;
 	        direccion.disabled = edita.checked ? false : true;
 	        cp.disabled = edita.checked ? false : true;
 	        ciudad.disabled = edita.checked ? false : true;
 	        provincia.disabled = edita.checked ? false : true;
-	        telefono.disabled = edita.checked ? false : true; */
+	        telefono.disabled = edita.checked ? false : true;
 	        
-	        if(edita.checked){
-	        	if (!cif.disabled) {
-		            cif.focus();
-		        }
-		        if (!nombre.disabled) {
-		            nombre.focus();
-		        }
-		        if (!direccion.disabled) {
-		            direccion.focus();
-		        }
-		        if (!cp.disabled) {
-		            cp.focus();
-		        }
-		        if (!ciudad.disabled) {
-		            ciudad.focus();
-		        }
-		        if (!provincia.disabled) {
-		            provincia.focus();
-		        }
-		        if (!telefono.disabled) {
-		            telefono.focus();
-		        }
-	        } else {
-	        	<%
-	        	
-	        	%>
+	        if(edita.check){
+	        	elimina
 	        }
 	        
+        	/*if (cif.disabled) {
+	            cif.focus();
+	        }
+	        if (nombre.disabled) {
+	            nombre.focus();
+	        }
+	        if (direccion.disabled) {
+	            direccion.focus();
+	        }
+	        if (cp.disabled) {
+	            cp.focus();
+	        }
+	        if (ciudad.disabled) {
+	            ciudad.focus();
+	        }
+	        if (provincia.disabled) {
+	            provincia.focus();
+	        }
+	        if (telefono.disabled) {
+	            telefono.focus();
+	        }*/
 	        
 	    }
 	</script>
@@ -124,7 +122,10 @@ String nombre = (String) request.getAttribute("nombre");
 					</label>
 				</td>
 				<td>
-					<input type="button" value="Eliminar" onclick="location.href='Empresa?action=elimina&CIF=<%= empr.get(i).getCIF() %>';">
+					<input type="button" value="Eliminar" id="elimina" onclick="location.href='Empresa?action=elimina&CIF=<%= empr.get(i).getCIF() %>';">
+				</td>
+				<td>
+					<input type="button" value="Editar" id="editar" onclick="location.href='Empresa?action=editar&CIF=<%= empr.get(i).getCIF() %>&nombre=<%= empr.get(i).getNombre() %>&direccion=<%= empr.get(i).getDireccion() %>&CP=<%= empr.get(i).getCP() %>&ciudad=<%= empr.get(i).getCiudad() %>&provincia=<%= empr.get(i).getProvincia() %>&telefono=<%= empr.get(i).getNumero() %>';">
 				</td>
 				<tr>
 				<%
