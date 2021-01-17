@@ -9,6 +9,7 @@ public class Empresa {
     private String provincia;
     private int numero;
 
+    
     public Empresa(String CIF, String nombre, String direccion, int CP, String ciudad, String provincia, int numero) {
         this.CIF = CIF;
         this.nombre = nombre; 

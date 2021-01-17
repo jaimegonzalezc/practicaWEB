@@ -39,19 +39,22 @@ public class EmpresaServlet extends HttpServlet {
 		EmpresaDao dao = new EmpresaDao();
 		
 		String cif = (String) request.getParameter("CIF");
-		String nombre = (String) request.getParameter("nombre");
-		String direccion = (String) request.getParameter("direccion");
-		int cp = Integer.getInteger(request.getParameter("CP"));
-		String ciudad = (String) request.getParameter("ciudad");
-		String provincia = (String) request.getParameter("provincia");
-		int telefono = Integer.getInteger(request.getParameter("telefono"));
+
 		
 		if (action.equals("alta")) {
+			
+			String nombre = (String) request.getParameter("nombre");
+			String direccion = (String) request.getParameter("direccion");
+			int cp = Integer.parseInt(request.getParameter("CP"));
+			String ciudad = (String) request.getParameter("ciudad");
+			String provincia = (String) request.getParameter("provincia");
+			int telefono = Integer.parseInt(request.getParameter("telefono"));
 			Empresa empresa = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
 			dao.addEmpresa(empresa);
             request.getRequestDispatcher("gestionempresa.jsp").forward(request, response);
 		} else if(action.equals("elimina")) {
 			dao.deleteEmpresa(cif);
+			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
 		}
 	}
 

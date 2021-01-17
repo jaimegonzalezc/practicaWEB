@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="form" action="../Empresa?action=alta" method="post" onsubmit="return validate()">
+<form name="form" action="Empresa?action=alta" method="post" onsubmit="return validate()">
 	CIF: <input type="text" name="CIF"><br>
 	Nombre: <input type="text" name="nombre"><br>
 	Direccion: <input type="text" name="direccion"><br>

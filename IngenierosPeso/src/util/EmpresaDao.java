@@ -24,7 +24,6 @@ public class EmpresaDao {
 					"insert into Empresa (CIF,Nombre,Direccion,CP,Ciudad,Provincia,Telefono) values (?, ?, ?, ?, ?, ?, ?)");
 // Parameters start with 1
 			preparedStatement.setString(1, empresa.getCIF());
-			System.out.println(empresa.getCIF());
 			preparedStatement.setString(2, empresa.getNombre());
 			preparedStatement.setString(3, empresa.getDireccion());
 			preparedStatement.setInt(4, empresa.getCP());
