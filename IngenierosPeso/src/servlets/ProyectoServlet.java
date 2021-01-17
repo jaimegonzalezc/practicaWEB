@@ -43,7 +43,14 @@ public class ProyectoServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String tmp = request.getParameter("idProy");
+        String aux = request.getParameter("horasDedicadas");	
+        int horasDedicadas = Integer.parseInt(aux), idProy = Integer.parseInt(tmp);
+        String dni = (String) request.getParameter("dni");
+        ProyectoDao dao = new ProyectoDao();
+        dao.updateHoras(dni, idProy, horasDedicadas);
+        request.setAttribute("dni", dni); 
+        request.getRequestDispatcher("/ficharHoras.jsp").forward(request, response);
 	}
 
 }

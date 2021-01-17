@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import clases.Empresa;
 import clases.Proyecto;
 
 public class ProyectoDao {
@@ -15,7 +14,6 @@ public class ProyectoDao {
 	private Connection connection;
 
 	public ProyectoDao() {
-		System.out.println("holas");
 		connection = DbUtil.getConnection();
 	}
 
@@ -34,8 +32,7 @@ public class ProyectoDao {
 
 		}
 	}
-	
-	
+
 	public ArrayList<Proyecto> listProyectos(String dniUsuario) {
 		ArrayList<Proyecto> lista = new ArrayList<Proyecto>();
 		int idProy;
@@ -92,4 +89,15 @@ public class ProyectoDao {
 		return null;
 	}
 
+	public void updateHoras(String dniEmpleado, int idProy, int horas) {
+
+		try {
+			Statement statement = connection.createStatement();
+			statement.executeQuery("UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + horas
+					+ " WHERE Poyectos_idPoyectos = " + idProy + " and Empleados_Trabajadores_DNI = '" + dniEmpleado
+					+ "';");
+		} catch (SQLException e) {
+			System.out.println("Cagada shurmano");
+		}
+	}
 }

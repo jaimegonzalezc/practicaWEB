@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.User;
 import util.UserDao;
-import util.DbUtil;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
