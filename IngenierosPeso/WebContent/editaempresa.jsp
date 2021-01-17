@@ -22,6 +22,45 @@ String nombre = (String) request.getAttribute("nombre");
 </head>
 
 <body>
+	<script type="text/javascript">
+		function EnableDisableTextBox(edita) {
+	        var cif = document.getElementById("cif");
+	        var nombre = document.getElementById("nombre");
+	        var direccion = document.getElementById("direccion");
+	        var cp = document.getElementById("cp");
+	        var ciudad = document.getElementById("ciudad");
+	        var provincia = document.getElementById("provincia");
+	        var telefono = document.getElementById("telefono");
+	        cif.disabled = edita.checked ? false : true;
+	        nombre.disabled = edita.checked ? false : true;
+	        direccion.disabled = edita.checked ? false : true;
+	        cp.disabled = edita.checked ? false : true;
+	        ciudad.disabled = edita.checked ? false : true;
+	        provincia.disabled = edita.checked ? false : true;
+	        telefono.disabled = edita.checked ? false : true;
+	        if (!cif.disabled) {
+	            cif.focus();
+	        }
+	        if (!nombre.disabled) {
+	            nombre.focus();
+	        }
+	        if (!direccion.disabled) {
+	            direccion.focus();
+	        }
+	        if (!cp.disabled) {
+	            cp.focus();
+	        }
+	        if (!ciudad.disabled) {
+	            ciudad.focus();
+	        }
+	        if (!provincia.disabled) {
+	            provincia.focus();
+	        }
+	        if (!telefono.disabled) {
+	            telefono.focus();
+	        }
+	    }
+	</script>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" href="#">Ingenieros al peso</a>
@@ -54,23 +93,28 @@ String nombre = (String) request.getAttribute("nombre");
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
 				<%
 				EmpresaDao emprdao = new EmpresaDao();
 				ArrayList<Empresa> empr = emprdao.getTodasEmpresas();
 				for (int i = 0; i < empr.size(); i++) {
 				%>
-				<td><%= empr.get(i).getCIF() %></td>
-				<td><%= empr.get(i).getNombre() %></td>
-				<td><%= empr.get(i).getDireccion() %></td>
-				<td><%= empr.get(i).getCP() %></td>
-				<td><%= empr.get(i).getCiudad() %></td>
-				<td><%= empr.get(i).getProvincia() %></td>
-				<td><%= empr.get(i).getNumero() %></td>
+				<tr>
+				<td><input type="text" disabled="disabled" id="cif" value="<%= empr.get(i).getCIF() %>"></td>
+				<td><input type="text" disabled="disabled" id="nombre" value="<%= empr.get(i).getNombre() %>"></td>
+				<td><input type="text" disabled="disabled" id="direccion" value="<%= empr.get(i).getDireccion() %>"></td>
+				<td><input type="text" disabled="disabled" id="cp" value="<%= empr.get(i).getCP() %>"></td>
+				<td><input type="text" disabled="disabled" id="ciudad" value="<%= empr.get(i).getCiudad() %>"></td>
+				<td><input type="text" disabled="disabled" id="provincia" value="<%= empr.get(i).getProvincia() %>"></td>
+				<td><input type="text" disabled="disabled" id="telefono" value="<%= empr.get(i).getNumero() %>"></td>
+				<td>
+					<label for="edita">
+						<input type="checkbox" id="edita" onclick="EnableDisableTextBox(this)">
+					</label>
+				</td>
+				<tr>
 				<%
 				}
 				%>
-			</tr>
 		</tbody>
 	</table>
 	<div class="row text-center">
