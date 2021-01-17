@@ -5,7 +5,16 @@
 <html lang="es">
 
 <head>
+<style>
+label {
+	display: block;
+	font: 1rem 'Fira Sans', sans-serif;
+}
 
+input, label {
+	margin: .4rem 0;
+}
+</style>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +26,7 @@
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 <%
 String dni = (String) request.getAttribute("dni");
-String nombre = (String) request.getAttribute("nombre");
+request.setAttribute("dni", dni);
 %>
 </head>
 
@@ -37,7 +46,7 @@ String nombre = (String) request.getAttribute("nombre");
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>
-					</ul>
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -56,9 +65,9 @@ String nombre = (String) request.getAttribute("nombre");
 				ArrayList<Proyecto> proys = proyectodao.listProyectos(dni);
 				for (int i = 0; i < proys.size(); i++) {
 				%>
-				<td><%= proys.get(0).getIdProyecto() %></td>
-				<td><%= proys.get(0).getDescripcion() %></td>
-				<td><%= proyectodao.getHorasProy(dni, proys.get(0).getIdProyecto()) %></td>
+				<td><%=proys.get(0).getIdProyecto()%></td>
+				<td><%=proys.get(0).getDescripcion()%></td>
+				<td><%=proyectodao.getHorasProy(dni, proys.get(0).getIdProyecto())%></td>
 				<%
 				}
 				%>
@@ -66,17 +75,13 @@ String nombre = (String) request.getAttribute("nombre");
 		</tbody>
 	</table>
 	<div class="row text-center">
-
 		<div class="container">
-			<form action="TecnicoServlet">
-				<p>Introduzca el número de horas que ha dedicado al proyecto
-					elegido.</p>
-				<input type="time" name="hora" max="8:00:00" min="00:30:00" required>
-
-
-
-
-
+			<form action="ProyectoServlet" method="post">
+				<label>Introduzca el número de horas que ha dedicado al
+					proyecto elegido:</label> <input type="number" max=8 name="horasDedicadas">
+				<br> <label>Seleccione el Id del proyecto a modificar</label> <input
+					type="number" name="idProy" min="1" required> <input
+					type="submit" value=submit>
 			</form>
 
 		</div>

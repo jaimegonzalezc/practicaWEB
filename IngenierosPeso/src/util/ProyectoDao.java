@@ -13,7 +13,6 @@ public class ProyectoDao {
 	private Connection connection;
 
 	public ProyectoDao() {
-		System.out.println("holas");
 		connection = DbUtil.getConnection();
 	}
 
@@ -71,6 +70,20 @@ public class ProyectoDao {
 		} catch (SQLException e) {
 		}
 		return null;
+	}
+	
+	public void updateHoras (String dniEmpleado, String idProy, int horas) {
+		int horasAnteriores;
+		try {
+			Statement statement = connection.createStatement();
+			System.out.println(dniEmpleado);
+			System.out.println(idProy);
+			System.out.println(horas);
+			ResultSet rs = statement.executeQuery("UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + 
+			horas + "WHERE (Poyectos_idPoyectos = " + idProy + ") and (Empleados_Trabajadores_DNI = '" + dniEmpleado + "');");
+		} catch (SQLException e) {
+			System.out.println("Cagada shurmano");
+		}
 	}
 
 }
