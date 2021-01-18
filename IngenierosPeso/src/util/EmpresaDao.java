@@ -21,7 +21,7 @@ public class EmpresaDao {
 	public void addEmpresa(Empresa empresa) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into Empresa (CIF,Nombre,Direccion,CP,Ciudad,Provincia,Telefono) values (?, ?, ?, ?, ?, ?, ?)");
+					"insert into mydb.Empresa (CIF,Nombre,Direccion,CP,Ciudad,Provincia,Telefono) values (?, ?, ?, ?, ?, ?, ?)");
 // Parameters start with 1
 			preparedStatement.setString(1, empresa.getCIF());
 			preparedStatement.setString(2, empresa.getNombre());
@@ -60,16 +60,46 @@ public class EmpresaDao {
 		return null;
 	}
 	
-	public Empresa actualizaEmpresa(Empresa empr) {
+	public boolean actualizaEmpresa(Empresa empr) {
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("UPDATE mydb.Empresa SET Nombre='"+empr.getNombre() +"'"
-					+ ", Direccion='"+empr.getDireccion()+"', CP='"+empr.getCP()+"', Ciudad='"+empr.getCiudad()+"',"
-							+ "Provincia='"+empr.getProvincia()+"', Telefono='"+empr.getNumero()+"' where CIF = '" + empr.getCIF() + "';");
-			return empr;
+			statement.executeQuery("UPDATE mydb.Empresa SET Telefono="+empr.getNumero()+" where CIF =" + empr.getCIF() + ";");
+			
+			/*String cif = empr.getCIF();
+			String nom = empr.getNombre();
+			String dir = empr.getDireccion();
+			int cp = empr.getCP();
+			String ciu = empr.getCiudad();
+			String prov = empr.getProvincia();
+			int number= empr.getNumero();
+			
+			System.out.println(cif);
+			
+			String sql = "UPDATE mydb.Empresa set CIF=?,Nombre=?,Direccion=?,CP=?,Ciudad=?,Provincia=?,Telefono=? WHERE CIF="+cif;
+			
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, cif);
+			ps.setString(2, nom);
+			ps.setString(3, dir);
+			ps.setInt(4, cp);
+			ps.setString(5, ciu);
+			ps.setString(6, prov);
+			ps.setInt(7, number);
+							
+			boolean i = ps.executeUpdate()>0;
+			
+			if(i) {
+				System.out.println("Si");
+			} else {
+				System.out.println("NO");
+			}
+			
+			ps.close();
+			System.out.println("HOLA");*/
+			return true;
 		} catch (SQLException e) {
 		}
-		return null;
+		return false;
 	}
 	
 	public ArrayList<Empresa> getTodasEmpresas() {

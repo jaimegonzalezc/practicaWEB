@@ -75,45 +75,6 @@ String nombre = (String) request.getAttribute("nombre");
 				provincia.disabled = true;
 				telefono.disabled = true;
 			}
-			
-			/*var elimina = document.getElementById("elimina");
-	        var cif = document.getElementById("cif");
-	        var nombre = document.getElementById("nombre");
-	        var direccion = document.getElementById("direccion");
-	        var cp = document.getElementById("cp");
-	        var ciudad = document.getElementById("ciudad");
-	        var provincia = document.getElementById("provincia");
-	        var telefono = document.getElementById("telefono");
- 	        cif.disabled = edita.checked ? false : true;
-	        nombre.disabled = edita.checked ? false : true;
-	        direccion.disabled = edita.checked ? false : true;
-	        cp.disabled = edita.checked ? false : true;
-	        ciudad.disabled = edita.checked ? false : true;
-	        provincia.disabled = edita.checked ? false : true;
-	        telefono.disabled = edita.checked ? false : true;
-	        
-	        
-        	if (cif.disabled) {
-	            cif.focus();
-	        }
-	        if (nombre.disabled) {
-	            nombre.focus();
-	        }
-	        if (direccion.disabled) {
-	            direccion.focus();
-	        }
-	        if (cp.disabled) {
-	            cp.focus();
-	        }
-	        if (ciudad.disabled) {
-	            ciudad.focus();
-	        }
-	        if (provincia.disabled) {
-	            provincia.focus();
-	        }
-	        if (telefono.disabled) {
-	            telefono.focus();
-	        }*/
 	        
 	    }
 	</script>
@@ -139,7 +100,6 @@ String nombre = (String) request.getAttribute("nombre");
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th scope="col">Nº</th>
 				<th scope="col">CIF</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Direccion</th>
