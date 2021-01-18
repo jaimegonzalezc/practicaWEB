@@ -1,3 +1,4 @@
+Edfd
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -88,10 +89,11 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `mydb`.`Poyectos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Poyectos` (
-  `idPoyectos` INT NOT NULL,
-  `FechaIni` DATETIME NULL DEFAULT NULL,
-  `FechaFin` DATETIME NULL DEFAULT NULL,
+  `idPoyectos` INT NOT NULL AUTO_INCREMENT,
+  `Titulo` VARCHAR(45) NULL DEFAULT NULL,
   `Descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `FechaIni` DATE NULL DEFAULT NULL,
+  `FechaFin` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`idPoyectos`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -101,14 +103,10 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `mydb`.`Empleados_estan_proyectos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Empleados_estan_proyectos` (
-  `Poyectos_idPoyectos` INT NOT NULL,
+  `Poyectos_idPoyectos` INT NOT NULL AUTO_INCREMENT,
   `Empleados_Trabajadores_DNI` VARCHAR(9) NOT NULL,
   `Horas` INT NULL DEFAULT NULL,
   PRIMARY KEY (`Poyectos_idPoyectos`, `Empleados_Trabajadores_DNI`),
-  INDEX `fk_Trabajadores_estan_proyectos_Empleados1_idx` (`Empleados_Trabajadores_DNI` ASC) VISIBLE,
-  CONSTRAINT `fk_Trabajadores_estan_proyectos_Empleados1`
-    FOREIGN KEY (`Empleados_Trabajadores_DNI`)
-    REFERENCES `mydb`.`Empleado` (`Usuarios_DNI`),
   CONSTRAINT `fk_Trabajadores_estan_proyectos_Poyectos1`
     FOREIGN KEY (`Poyectos_idPoyectos`)
     REFERENCES `mydb`.`Poyectos` (`idPoyectos`))
@@ -136,26 +134,20 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `mydb`.`Empresa_tiene_proyectos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Empresa_tiene_proyectos` (
+  `Poyectos_idPoyectos` INT NOT NULL AUTO_INCREMENT,
   `Empresa_CIF` VARCHAR(9) NOT NULL,
-  `Poyectos_idPoyectos` INT NOT NULL,
-  PRIMARY KEY (`Empresa_CIF`, `Poyectos_idPoyectos`),
+  PRIMARY KEY (`Poyectos_idPoyectos`, `Empresa_CIF`),
   INDEX `fk_Empresa_tiene_proyectos_Poyectos1_idx` (`Poyectos_idPoyectos` ASC) VISIBLE,
   INDEX `fk_Empresa_tiene_proyectos_Empresa1_idx` (`Empresa_CIF` ASC) VISIBLE,
-  CONSTRAINT `fk_Empresa_tiene_proyectos_Poyectos1`
-    FOREIGN KEY (`Poyectos_idPoyectos`)
-    REFERENCES `mydb`.`Poyectos` (`idPoyectos`),
   CONSTRAINT `fk_Empresa_tiene_proyectos_Empresa1`
     FOREIGN KEY (`Empresa_CIF`)
-    REFERENCES `mydb`.`Empresa` (`CIF`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `mydb`.`Empresa` (`CIF`),
+  CONSTRAINT `fk_Empresa_tiene_proyectos_Poyectos1`
+    FOREIGN KEY (`Poyectos_idPoyectos`)
+    REFERENCES `mydb`.`Poyectos` (`idPoyectos`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 USE `mydb`;
 
 DELIMITER $$
@@ -194,3 +186,7 @@ END$$
 
 
 DELIMITER ;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
