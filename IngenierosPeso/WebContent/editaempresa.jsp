@@ -23,8 +23,60 @@ String nombre = (String) request.getAttribute("nombre");
 
 <body>
 	<script type="text/javascript">
-		function EnableDisableTextBox(edita) {
-			var elimina = document.getElementById("elimina");
+		function EnviarEdicion(i) {
+			
+			//COGER BOTONES
+			var elimina = "elimina"+i;
+			var editar = "editar"+i;
+			var edita = "edita"+i;
+			var eli = document.getElementById(elimina);
+			var edi = document.getElementById(editar);
+			
+			//COGER VARIABLES
+			var cifForm = "cif"+i;
+			var nomForm = "nombre"+i;
+			var dirForm = "direccion"+i;
+			var cpForm = "cp"+i;
+			var ciuForm = "ciudad"+i;
+			var provForm = "provincia"+i;
+			var tlfForm = "telefono"+i;
+			
+			var cif = document.getElementById(cifForm);
+	        var nombre = document.getElementById(nomForm);
+	        var direccion = document.getElementById(dirForm);
+	        var cp = document.getElementById(cpForm);
+	        var ciudad = document.getElementById(ciuForm);
+	        var provincia = document.getElementById(provForm);
+	        var telefono = document.getElementById(tlfForm);
+			
+			//ACTIVAR O DESACTIVAR	
+			if (document.getElementById(edita).checked)
+			{	
+				eli.disabled = true;
+				
+				edi.disabled = false;
+				cif.disabled = false;
+				nombre.disabled = false;
+				direccion.disabled = false;
+				cp.disabled = false;
+				ciudad.disabled = false;
+				provincia.disabled = false;
+				telefono.disabled = false;
+				
+			}else{
+				eli.disabled = false;
+				
+				edi.disabled = true;
+				cif.disabled = true;
+				nombre.disabled = true;
+				direccion.disabled = true;
+				cp.disabled = true;
+				ciudad.disabled = true;
+				provincia.disabled = true;
+				telefono.disabled = true;
+			}
+			
+			/*var elimina = document.getElementById("elimina");
 	        var cif = document.getElementById("cif");
 	        var nombre = document.getElementById("nombre");
 	        var direccion = document.getElementById("direccion");
@@ -40,11 +92,8 @@ String nombre = (String) request.getAttribute("nombre");
 	        provincia.disabled = edita.checked ? false : true;
 	        telefono.disabled = edita.checked ? false : true;
 	        
-	        if(edita.check){
-	        	elimina
-	        }
 	        
-        	/*if (cif.disabled) {
+        	if (cif.disabled) {
 	            cif.focus();
 	        }
 	        if (nombre.disabled) {
@@ -105,27 +154,26 @@ String nombre = (String) request.getAttribute("nombre");
 				EmpresaDao emprdao = new EmpresaDao();
 				ArrayList<Empresa> empr = emprdao.getTodasEmpresas();
 				int numero=1;
+				
 				for (int i = 0; i < empr.size(); i++) {
+					
 				%>
 				<tr>
-				<td><%= numero++ %> </td>
-				<td><input type="text" disabled="disabled" id="cif" value="<%= empr.get(i).getCIF() %>"></td>
-				<td><input type="text" disabled="disabled" id="nombre" value="<%= empr.get(i).getNombre() %>"></td>
-				<td><input type="text" disabled="disabled" id="direccion" value="<%= empr.get(i).getDireccion() %>"></td>
-				<td><input type="text" disabled="disabled" id="cp" value="<%= empr.get(i).getCP() %>"></td>
-				<td><input type="text" disabled="disabled" id="ciudad" value="<%= empr.get(i).getCiudad() %>"></td>
-				<td><input type="text" disabled="disabled" id="provincia" value="<%= empr.get(i).getProvincia() %>"></td>
-				<td><input type="text" disabled="disabled" id="telefono" value="<%= empr.get(i).getNumero() %>"></td>
+				<td><input type="text" disabled="disabled" id="cif<%=i%>" value="<%= empr.get(i).getCIF() %>"></td>
+				<td><input type="text" disabled="disabled" id="nombre<%=i%>" value="<%= empr.get(i).getNombre() %>"></td>
+				<td><input type="text" disabled="disabled" id="direccion<%=i%>" value="<%= empr.get(i).getDireccion() %>"></td>
+				<td><input type="text" disabled="disabled" id="cp<%=i%>" value="<%= empr.get(i).getCP() %>"></td>
+				<td><input type="text" disabled="disabled" id="ciudad<%=i%>" value="<%= empr.get(i).getCiudad() %>"></td>
+				<td><input type="text" disabled="disabled" id="provincia<%=i%>" value="<%= empr.get(i).getProvincia() %>"></td>
+				<td><input type="text" disabled="disabled" id="telefono<%=i%>" value="<%= empr.get(i).getNumero() %>"></td>
 				<td>
-					<label for="edita">
-						<input type="checkbox" id="edita" onclick="EnableDisableTextBox(this)">
-					</label>
+					<input type="checkbox" id="edita<%=i%>" onclick="EnviarEdicion(<%=i%>)">
 				</td>
 				<td>
-					<input type="button" value="Eliminar" id="elimina" onclick="location.href='Empresa?action=elimina&CIF=<%= empr.get(i).getCIF() %>';">
+					<input type="button" value="Eliminar" id="elimina<%=i%>" onclick="location.href='Empresa?action=elimina&CIF=<%= empr.get(i).getCIF() %>';">
 				</td>
 				<td>
-					<input type="button" value="Editar" id="editar" onclick="location.href='Empresa?action=editar&CIF=<%= empr.get(i).getCIF() %>&nombre=<%= empr.get(i).getNombre() %>&direccion=<%= empr.get(i).getDireccion() %>&CP=<%= empr.get(i).getCP() %>&ciudad=<%= empr.get(i).getCiudad() %>&provincia=<%= empr.get(i).getProvincia() %>&telefono=<%= empr.get(i).getNumero() %>';">
+					<input type="button" value="Editar" disabled="disabled" id="editar<%=i%>" onclick="location.href='Empresa?action=editar&CIF=<%= empr.get(i).getCIF() %>&nombre=<%= empr.get(i).getNombre() %>&direccion=<%= empr.get(i).getDireccion() %>&CP=<%= empr.get(i).getCP() %>&ciudad=<%= empr.get(i).getCiudad() %>&provincia=<%= empr.get(i).getProvincia() %>&telefono=<%= empr.get(i).getNumero() %>';">
 				</td>
 				<tr>
 				<%
