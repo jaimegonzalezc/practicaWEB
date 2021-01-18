@@ -27,16 +27,16 @@ public class ProyectoServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		ProyectoDao proyDao = new ProyectoDao();
-		
-		//int idProy = Integer.getInteger(request.getParameter("id"));
+		int idProy = Integer.parseInt(request.getParameter("id"));
+		String Titulo = (String) request.getParameter("FI");
 		String FIni = (String) request.getParameter("FI");
 		String FFin = (String) request.getParameter("FF");
 		String Descr = (String) request.getParameter("Descr");
 		
 		if(action.equals("alta")) {
 			
-			Proyecto proyec = new Proyecto(22,FIni,FFin,Descr);
-			proyDao.addProyecto(proyec);;
+			Proyecto proyec = new Proyecto(Titulo,FIni,FFin,Descr);
+			proyDao.addProyecto(proyec);
             request.getRequestDispatcher("gestionproyectos.jsp").forward(request, response);
 			
 		}

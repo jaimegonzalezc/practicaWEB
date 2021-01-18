@@ -20,11 +20,11 @@ public class ProyectoDao {
 	public void addProyecto(Proyecto proyecto) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into Empresa (idProyectos,FechaIni,FechaFin,Descripcion) values (?, ?, ?, ?)");
-			preparedStatement.setInt(1, proyecto.getIdProyecto());
-			preparedStatement.setString(2, proyecto.getFechaIni());
-			preparedStatement.setString(3, proyecto.getFechaFin());
-			preparedStatement.setString(4, proyecto.getDescripcion());
+					"insert into Empresa (Titulo,Descripcion,FechaIni,FechaFin) values (?, ?, ?, ?)");
+			preparedStatement.setString(1, proyecto.getTitulo());
+			preparedStatement.setString(2, proyecto.getDescripcion());
+			preparedStatement.setString(3, proyecto.getFechaIni());
+			preparedStatement.setString(4, proyecto.getFechaFin());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
@@ -35,7 +35,7 @@ public class ProyectoDao {
 	public ArrayList<Proyecto> listProyectos(String dniUsuario) {
 		ArrayList<Proyecto> lista = new ArrayList<Proyecto>();
 		int idProy;
-		String fechaIni, fechaFin, descripcion;
+		String titulo, fechaIni, fechaFin, descripcion;
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Poyectos \n"
@@ -43,10 +43,11 @@ public class ProyectoDao {
 					+ "where mydb.Empleados_estan_proyectos.Empleados_Trabajadores_DNI = '" + dniUsuario + "';");
 			while (rs.next()) {
 				idProy = rs.getInt("Poyectos_idPoyectos");
+				titulo = rs.getString("Titulo");
 				fechaIni = rs.getString("FechaIni");
 				fechaFin = rs.getString("FechaFin");
 				descripcion = rs.getString("Descripcion");
-				Proyecto proyecto = new Proyecto(idProy, fechaIni, fechaFin, descripcion);
+				Proyecto proyecto = new Proyecto(idProy, titulo, fechaIni, fechaFin, descripcion);
 				lista.add(proyecto);
 			}
 			return lista;
@@ -72,15 +73,16 @@ public class ProyectoDao {
 	}
 
 	public Proyecto getProyecto(int idProy) {
-		String fechaI, fechaF, desc;
+		String titulo,fechaI, fechaF, desc;
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Proyectos where idProyectos = '" + idProy + "';");
 			while (rs.next()) {
 				fechaI = rs.getString("FechaIni");
+				titulo = rs.getString("Titulo");
 				fechaF = rs.getString("FechaFin");
 				desc = rs.getString("Descripcion");
-				Proyecto proyecto = new Proyecto(idProy, fechaI, fechaF, desc);
+				Proyecto proyecto = new Proyecto(idProy,titulo, fechaI, fechaF, desc);
 				return proyecto;
 			}
 		} catch (SQLException e) {
