@@ -17,16 +17,26 @@ public class ProyectoDao {
 		connection = DbUtil.getConnection();
 	}
 
-	public void addProyecto(Proyecto proyecto) {
+	public void addProyecto(Proyecto proyecto, String cif, int id) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into mydb.Proyectos (Titulo,Descripcion,FechaIni,FechaFin) values (?,?,?,?)");
-			preparedStatement.setString(1, proyecto.getTitulo());
-			preparedStatement.setString(2, proyecto.getDescripcion());
-			preparedStatement.setString(3, proyecto.getFechaIni());
-			preparedStatement.setString(4, proyecto.getFechaFin());
-			preparedStatement.executeUpdate();
-			preparedStatement.close();
+			PreparedStatement preparedStatement1 = connection.prepareStatement(
+					"insert into mydb.Proyectos (idProyectos, Titulo,Descripcion,FechaIni,FechaFin) values (?,?,?,?,?)");
+			PreparedStatement preparedStatement2 = connection.prepareStatement(
+					"insert into mydb.Empresa_tiene_proyectos (Proyectos_idProyectos,Empresa_CIF) values (?,?)");
+			
+			preparedStatement1.setInt(1, id);
+			preparedStatement1.setString(2, proyecto.getTitulo());
+			preparedStatement1.setString(3, proyecto.getDescripcion());
+			preparedStatement1.setString(4, proyecto.getFechaIni());
+			preparedStatement1.setString(5, proyecto.getFechaFin());
+			preparedStatement1.executeUpdate();
+			preparedStatement1.close();
+			
+			preparedStatement2.setInt(1, id);
+			preparedStatement2.setString(2, cif);
+			preparedStatement2.executeUpdate();
+			preparedStatement2.close();
+			
 		} catch (SQLException e) {
 			
 			System.out.println(e.getMessage());
@@ -162,6 +172,11 @@ public class ProyectoDao {
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 		}
+	}
+	
+	
+	public void actualiza() {
+		
 	}
 	
 }

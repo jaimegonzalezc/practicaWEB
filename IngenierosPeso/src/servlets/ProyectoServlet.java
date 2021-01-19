@@ -17,6 +17,7 @@ import util.ProyectoDao;
 @WebServlet("/ProyectoServlet")
 public class ProyectoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ProyectoDao proyDao = new ProyectoDao();
 
     public ProyectoServlet() {
         super();
@@ -26,7 +27,7 @@ public class ProyectoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		
-		ProyectoDao proyDao = new ProyectoDao();
+		
 		
 		String id = (String) request.getParameter("idpro");
 		int idpro = Integer.parseInt(id);
@@ -40,8 +41,8 @@ public class ProyectoServlet extends HttpServlet {
 			String fini = (String) request.getParameter("fi");
 			String ffin = (String) request.getParameter("ff");
 			
-			
 			Proyecto pro = new Proyecto(idpro,titulo,fini,ffin,desc);
+			
 			proyDao.updateProyectos(pro);
 			request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
 		}
@@ -50,7 +51,6 @@ public class ProyectoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		
-		ProyectoDao proyDao = new ProyectoDao();
 		
 		
         if(action.equals("alta")) {
@@ -58,9 +58,12 @@ public class ProyectoServlet extends HttpServlet {
     		String FIni = (String) request.getParameter("FI");
     		String FFin = (String) request.getParameter("FF");
     		String Descr = (String) request.getParameter("Descr");
+    		String cif = (String) request.getParameter("CIF");
+    		int tamaño = proyDao.getTodosProyectos().size();
+			int ultpro = proyDao.getTodosProyectos().get(tamaño-1).getIdProyecto();
     		
-			Proyecto proyec = new Proyecto(Titulo,FIni,FFin,Descr);
-			proyDao.addProyecto(proyec);
+			Proyecto proyec = new Proyecto(ultpro+1,Titulo,FIni,FFin,Descr);
+			proyDao.addProyecto(proyec,cif,ultpro+1);
             request.getRequestDispatcher("gestionproyectos.jsp").forward(request, response);
             
 		} else if(action.equals("fichar")) {
