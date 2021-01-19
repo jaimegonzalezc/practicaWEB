@@ -74,7 +74,7 @@ String nombre = (String) request.getAttribute("nombre");
 	        
 	    }
 		
-		function cambiatitulo(i){
+		/* function cambiatitulo(i){
 			var titForm = "titulo"+i;
 			var titulo = document.getElementById(titForm);
 			nuevotit = titulo.value;
@@ -93,19 +93,24 @@ String nombre = (String) request.getAttribute("nombre");
 			var ffForm = "ff"+i;
 			var ffin = document.getElementById(ffForm);
 			nuevoff = ffin.value;
-		}
+		} */
 		
 		function actualizar(i){
+					
+			var idForm = "idproy"+i;
 			var titForm = "titulo"+i;
 			var descForm = "descr"+i;
 			var fiForm = "fi"+i;
 			var ffForm = "ff"+i;
 			
+			var idproy = document.getElementById(idForm);
 	        var titulo = document.getElementById(titForm);
 	        var descripcion = document.getElementById(descForm);
 	        var finicio = document.getElementById(fiForm);
 	        var ffin = document.getElementById(ffForm);
 	        
+	        window.location.href="ProyectoServlet?action=editar&idpro="+idproy.value+"&titulo="+titulo.value
+	        		+"&desc="+descripcion.value+"&fi="+finicio.value+"&ff="+ffin.value;
 	        
 		}
 		
@@ -147,11 +152,11 @@ String nombre = (String) request.getAttribute("nombre");
 					
 				%>
 				<tr>
-				<td><input type="text" disabled="disabled" id="idproy" value="<%= proy.get(i).getIdProyecto() %>"></td>
-				<td><input type="text" disabled="disabled" onchange="cambiatitulo(<%=i%>)" id="titulo<%=i%>" value="<%= proy.get(i).getTitulo() %>"></td>
-				<td><input type="text" disabled="disabled" onchange="cambiadesc(<%=i%>)" id="descr<%=i%>" value="<%= proy.get(i).getDescripcion() %>"></td>
-				<td><input type="text" disabled="disabled" onchange="cambiafi(<%=i%>)" id="fi<%=i%>" value="<%= proy.get(i).getFechaIni() %>"></td>
-				<td><input type="text" disabled="disabled" onchange="cambiaff(<%=i%>)" id="ff<%=i%>" value="<%= proy.get(i).getFechaFin() %>"></td>
+				<td><input type="text" disabled="disabled" id="idproy<%=i%>" value="<%= proy.get(i).getIdProyecto() %>"></td>
+				<td><input type="text" disabled="disabled" id="titulo<%=i%>" value="<%= proy.get(i).getTitulo() %>"></td>
+				<td><input type="text" disabled="disabled" id="descr<%=i%>" value="<%= proy.get(i).getDescripcion() %>"></td>
+				<td><input type="text" disabled="disabled" id="fi<%=i%>" value="<%= proy.get(i).getFechaIni() %>"></td>
+				<td><input type="text" disabled="disabled" id="ff<%=i%>" value="<%= proy.get(i).getFechaFin() %>"></td>
 				<td>
 					<input type="checkbox" id="edita<%=i%>" onclick="EnviarEdicion(<%=i%>)">
 				</td>
@@ -160,7 +165,7 @@ String nombre = (String) request.getAttribute("nombre");
 				</td>
 				<td>
 				<!-- NO COJO EL VALOR, COJO DIRECTAMENTE EL TITULO, HAY QUE CAMBIAR EL TITULO DEL PROY.GET() -->
-					<input type="button" disabled="disabled" value="Editar" id="editar<%=i%>" onclick="actualizar();location.href='ProyectoServlet?action=editar&idpro=<%= proy.get(i).getIdProyecto() %>&titulo=<%= proy.get(i).getTitulo() %>&desc=<%= proy.get(i).getDescripcion() %>&fi=<%= proy.get(i).getFechaIni() %>&ff=<%= proy.get(i).getFechaFin() %>';">
+					<input type="button" disabled="disabled" value="Editar" id="editar<%=i%>" onclick="actualizar(<%=i%>)">
 				</td>
 				<tr>
 				<%

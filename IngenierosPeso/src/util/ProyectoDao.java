@@ -19,13 +19,17 @@ public class ProyectoDao {
 
 	public void addProyecto(Proyecto proyecto) {
 		try {
-			System.out.println(proyecto.getFechaFin());
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into mydb.Proyectos (Titulo,Descripcion,FechaIni,FechaFin) values ('"+proyecto.getTitulo()+"','"+proyecto.getDescripcion()+"',"
-							+ "'"+proyecto.getFechaIni()+"','"+proyecto.getFechaFin()+"');");
+					"insert into mydb.Proyectos (Titulo,Descripcion,FechaIni,FechaFin) values (?,?,?,?)");
+			preparedStatement.setString(1, proyecto.getTitulo());
+			preparedStatement.setString(2, proyecto.getDescripcion());
+			preparedStatement.setString(3, proyecto.getFechaIni());
+			preparedStatement.setString(4, proyecto.getFechaFin());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
+			
+			System.out.println(e.getMessage());
 
 		}
 	}
@@ -50,6 +54,7 @@ public class ProyectoDao {
 			}
 			return lista;
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -72,6 +77,7 @@ public class ProyectoDao {
 			}
 			return lista;
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -88,6 +94,7 @@ public class ProyectoDao {
 				return horas;
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return 0;
 	}
@@ -106,32 +113,43 @@ public class ProyectoDao {
 				return proyecto;
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
 	
 	public void updateProyectos(Proyecto pro) {
 		try {
-			System.out.println(pro.getTitulo());
-			Statement statement = connection.createStatement();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"update mydb.Proyectos set Titulo=?,Descripcion=?,FechaIni=?,FechaFin=?  where idProyectos=?");
+			preparedStatement.setString(1, pro.getTitulo());
+			preparedStatement.setString(2, pro.getDescripcion());
+			preparedStatement.setString(3, pro.getFechaIni());
+			preparedStatement.setString(4, pro.getFechaFin());
+			preparedStatement.setInt(5, pro.getIdProyecto());
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
 			
-			statement.executeQuery("UPDATE mydb.Proyectos SET Titulo='" + pro.getTitulo()
-					+ "',Descripcion='" + pro.getDescripcion() + "',FechaIni='" + pro.getFechaIni()
-					+ "',FechaFin='"+pro.getFechaFin()+"' WHERE idProyectos="+pro.getIdProyecto()+";");
 		} catch (SQLException e) {
-			System.out.println("Cagada shurmano1");
+			System.out.println(e.getMessage());
 		}
 	}
 	
 	public void updateHoras(String dniEmpleado, int idProy, int horas) {
 
 		try {
-			Statement statement = connection.createStatement();
-			statement.executeQuery("UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + horas
-					+ " WHERE Poyectos_idProyectos = " + idProy + " and Empleados_Trabajadores_DNI = '" + dniEmpleado
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + horas
+					+ " WHERE Proyectos_idProyectos = " + idProy + " and Empleados_Trabajadores_DNI = '" + dniEmpleado
 					+ "';");
+			//preparedStatement.setInt(1, horas);
+			//preparedStatement.setInt(2, idProy);
+			//preparedStatement.setString(3, dniEmpleado);
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			System.out.println("HECHO");
 		} catch (SQLException e) {
-			System.out.println("Cagada shurmano");
+			System.out.println(e.getMessage());
 		}
 	}
 	

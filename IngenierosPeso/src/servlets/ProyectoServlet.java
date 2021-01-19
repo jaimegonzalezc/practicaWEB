@@ -38,9 +38,8 @@ public class ProyectoServlet extends HttpServlet {
 			String titulo = (String) request.getParameter("titulo");
 			String desc = (String) request.getParameter("desc");
 			String fini = (String) request.getParameter("fi");
-			String ffin = (String) request.getParameter("fn");
+			String ffin = (String) request.getParameter("ff");
 			
-			System.out.println(titulo);
 			
 			Proyecto pro = new Proyecto(idpro,titulo,fini,ffin,desc);
 			proyDao.updateProyectos(pro);
