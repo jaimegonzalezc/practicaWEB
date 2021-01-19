@@ -27,30 +27,53 @@ public class ProyectoServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		ProyectoDao proyDao = new ProyectoDao();
-		int idProy = Integer.parseInt(request.getParameter("id"));
-		String Titulo = (String) request.getParameter("FI");
-		String FIni = (String) request.getParameter("FI");
-		String FFin = (String) request.getParameter("FF");
-		String Descr = (String) request.getParameter("Descr");
 		
-		if(action.equals("alta")) {
+		String id = (String) request.getParameter("idpro");
+		int idpro = Integer.parseInt(id);
+		
+		if(action.equals("elimina")) {	
+			proyDao.deleteProyecto(idpro);
+			request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
+		} else if(action.equals("editar")) {
+			String titulo = (String) request.getParameter("titulo");
+			String desc = (String) request.getParameter("desc");
+			String fini = (String) request.getParameter("fi");
+			String ffin = (String) request.getParameter("fn");
 			
-			Proyecto proyec = new Proyecto(Titulo,FIni,FFin,Descr);
-			proyDao.addProyecto(proyec);
-            request.getRequestDispatcher("gestionproyectos.jsp").forward(request, response);
+			System.out.println(titulo);
 			
+			Proyecto pro = new Proyecto(idpro,titulo,fini,ffin,desc);
+			proyDao.updateProyectos(pro);
+			request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tmp = request.getParameter("idProy");
-        String aux = request.getParameter("horasDedicadas");	
-        int horasDedicadas = Integer.parseInt(aux), idProy = Integer.parseInt(tmp);
-        String dni = (String) request.getParameter("dni");
-        ProyectoDao dao = new ProyectoDao();
-        dao.updateHoras(dni, idProy, horasDedicadas);
-        request.setAttribute("dni", dni); 
-        request.getRequestDispatcher("/ficharHoras.jsp").forward(request, response);
+		String action = request.getParameter("action");
+		
+		ProyectoDao proyDao = new ProyectoDao();
+		
+		
+        if(action.equals("alta")) {
+        	String Titulo = (String) request.getParameter("Titulo");
+    		String FIni = (String) request.getParameter("FI");
+    		String FFin = (String) request.getParameter("FF");
+    		String Descr = (String) request.getParameter("Descr");
+    		
+			Proyecto proyec = new Proyecto(Titulo,FIni,FFin,Descr);
+			proyDao.addProyecto(proyec);
+            request.getRequestDispatcher("gestionproyectos.jsp").forward(request, response);
+            
+		} else if(action.equals("fichar")) {
+			String tmp = request.getParameter("idProy");
+	        String aux = request.getParameter("horasDedicadas");	
+	        int horasDedicadas = Integer.parseInt(aux), idProy = Integer.parseInt(tmp);
+	        String dni = (String) request.getParameter("dni");
+	        proyDao.updateHoras(dni, idProy, horasDedicadas);
+	        request.setAttribute("dni", dni); 
+	        request.getRequestDispatcher("/ficharHoras.jsp").forward(request, response);
+		}
+        
 	}
 
 }

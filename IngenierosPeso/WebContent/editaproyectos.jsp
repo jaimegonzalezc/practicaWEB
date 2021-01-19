@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import='java.util.ArrayList, clases.Empresa, util.EmpresaDao'%>
+<%@page import='java.util.ArrayList, clases.Proyecto, util.ProyectoDao'%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -23,31 +23,33 @@ String nombre = (String) request.getAttribute("nombre");
 
 <body>
 	<script type="text/javascript">
+	
+		var nuevotit;
+		var nuevodesc;
+		var nuevofi;
+		var nuevoff;
+	
 		function EnviarEdicion(i) {
 			
 			//COGER BOTONES
 			var elimina = "elimina"+i;
-			var editar = "editar"+i;
 			var edita = "edita"+i;
+			
+			var editar = "editar"+i;
+			
 			var eli = document.getElementById(elimina);
 			var edi = document.getElementById(editar);
 			
 			//COGER VARIABLES
-			var cifForm = "cif"+i;
-			var nomForm = "nombre"+i;
-			var dirForm = "direccion"+i;
-			var cpForm = "cp"+i;
-			var ciuForm = "ciudad"+i;
-			var provForm = "provincia"+i;
-			var tlfForm = "telefono"+i;
+			var titForm = "titulo"+i;
+			var descForm = "descr"+i;
+			var fiForm = "fi"+i;
+			var ffForm = "ff"+i;
 			
-			var cif = document.getElementById(cifForm);
-	        var nombre = document.getElementById(nomForm);
-	        var direccion = document.getElementById(dirForm);
-	        var cp = document.getElementById(cpForm);
-	        var ciudad = document.getElementById(ciuForm);
-	        var provincia = document.getElementById(provForm);
-	        var telefono = document.getElementById(tlfForm);
+	        var titulo = document.getElementById(titForm);
+	        var descripcion = document.getElementById(descForm);
+	        var finicio = document.getElementById(fiForm);
+	        var ffin = document.getElementById(ffForm);
 			
 			//ACTIVAR O DESACTIVAR	
 			if (document.getElementById(edita).checked)
@@ -55,28 +57,58 @@ String nombre = (String) request.getAttribute("nombre");
 				eli.disabled = true;
 				
 				edi.disabled = false;
-				cif.disabled = false;
-				nombre.disabled = false;
-				direccion.disabled = false;
-				cp.disabled = false;
-				ciudad.disabled = false;
-				provincia.disabled = false;
-				telefono.disabled = false;
+				titulo.disabled = false;
+				descripcion.disabled = false;
+				finicio.disabled = false;
+				ffin.disabled = false;
 				
 			}else{
 				eli.disabled = false;
 				
 				edi.disabled = true;
-				cif.disabled = true;
-				nombre.disabled = true;
-				direccion.disabled = true;
-				cp.disabled = true;
-				ciudad.disabled = true;
-				provincia.disabled = true;
-				telefono.disabled = true;
+				titulo.disabled = true;
+				descripcion.disabled = true;
+				finicio.disabled = true;
+				ffin.disabled = true;
 			}
 	        
 	    }
+		
+		function cambiatitulo(i){
+			var titForm = "titulo"+i;
+			var titulo = document.getElementById(titForm);
+			nuevotit = titulo.value;
+		}
+		function cambiadesc(i){
+			var descForm = "descr"+i;
+			var descripcion = document.getElementById(descForm);
+			nuevodesc = descripcion.value;
+		}
+		function cambiafi(i){
+			var fiForm = "fi"+i;
+			var finicio = document.getElementById(fiForm);
+			nuevofi = finicio.value;
+		}
+		function cambiaff(i){
+			var ffForm = "ff"+i;
+			var ffin = document.getElementById(ffForm);
+			nuevoff = ffin.value;
+		}
+		
+		function actualizar(i){
+			var titForm = "titulo"+i;
+			var descForm = "descr"+i;
+			var fiForm = "fi"+i;
+			var ffForm = "ff"+i;
+			
+	        var titulo = document.getElementById(titForm);
+	        var descripcion = document.getElementById(descForm);
+	        var finicio = document.getElementById(fiForm);
+	        var ffin = document.getElementById(ffForm);
+	        
+	        
+		}
+		
 	</script>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -109,29 +141,26 @@ String nombre = (String) request.getAttribute("nombre");
 		</thead>
 		<tbody>
 				<%
-				EmpresaDao emprdao = new EmpresaDao();
-				ArrayList<Empresa> empr = emprdao.getTodasEmpresas();
-				int numero=1;
-				
-				for (int i = 0; i < empr.size(); i++) {
+				ProyectoDao proyecdao = new ProyectoDao();
+				ArrayList<Proyecto> proy = proyecdao.getTodosProyectos();
+				for (int i = 0; i < proy.size(); i++) {
 					
 				%>
 				<tr>
-				<td><input type="text" disabled="disabled" id="cif<%=i%>" value="<%= empr.get(i).getCIF() %>"></td>
-				<td><input type="text" disabled="disabled" id="nombre<%=i%>" value="<%= empr.get(i).getNombre() %>"></td>
-				<td><input type="text" disabled="disabled" id="direccion<%=i%>" value="<%= empr.get(i).getDireccion() %>"></td>
-				<td><input type="text" disabled="disabled" id="cp<%=i%>" value="<%= empr.get(i).getCP() %>"></td>
-				<td><input type="text" disabled="disabled" id="ciudad<%=i%>" value="<%= empr.get(i).getCiudad() %>"></td>
-				<td><input type="text" disabled="disabled" id="provincia<%=i%>" value="<%= empr.get(i).getProvincia() %>"></td>
-				<td><input type="text" disabled="disabled" id="telefono<%=i%>" value="<%= empr.get(i).getNumero() %>"></td>
+				<td><input type="text" disabled="disabled" id="idproy" value="<%= proy.get(i).getIdProyecto() %>"></td>
+				<td><input type="text" disabled="disabled" onchange="cambiatitulo(<%=i%>)" id="titulo<%=i%>" value="<%= proy.get(i).getTitulo() %>"></td>
+				<td><input type="text" disabled="disabled" onchange="cambiadesc(<%=i%>)" id="descr<%=i%>" value="<%= proy.get(i).getDescripcion() %>"></td>
+				<td><input type="text" disabled="disabled" onchange="cambiafi(<%=i%>)" id="fi<%=i%>" value="<%= proy.get(i).getFechaIni() %>"></td>
+				<td><input type="text" disabled="disabled" onchange="cambiaff(<%=i%>)" id="ff<%=i%>" value="<%= proy.get(i).getFechaFin() %>"></td>
 				<td>
 					<input type="checkbox" id="edita<%=i%>" onclick="EnviarEdicion(<%=i%>)">
 				</td>
 				<td>
-					<input type="button" value="Eliminar" id="elimina<%=i%>" onclick="location.href='Empresa?action=elimina&CIF=<%= empr.get(i).getCIF() %>';">
+					<input type="button" value="Eliminar" id="elimina<%=i%>" onclick="location.href='ProyectoServlet?action=elimina&idpro=<%= proy.get(i).getIdProyecto() %>';">
 				</td>
 				<td>
-					<input type="button" value="Editar" disabled="disabled" id="editar<%=i%>" onclick="location.href='Empresa?action=editar&CIF=<%= empr.get(i).getCIF() %>&nombre=<%= empr.get(i).getNombre() %>&direccion=<%= empr.get(i).getDireccion() %>&CP=<%= empr.get(i).getCP() %>&ciudad=<%= empr.get(i).getCiudad() %>&provincia=<%= empr.get(i).getProvincia() %>&telefono=<%= empr.get(i).getNumero() %>';">
+				<!-- NO COJO EL VALOR, COJO DIRECTAMENTE EL TITULO, HAY QUE CAMBIAR EL TITULO DEL PROY.GET() -->
+					<input type="button" disabled="disabled" value="Editar" id="editar<%=i%>" onclick="actualizar();location.href='ProyectoServlet?action=editar&idpro=<%= proy.get(i).getIdProyecto() %>&titulo=<%= proy.get(i).getTitulo() %>&desc=<%= proy.get(i).getDescripcion() %>&fi=<%= proy.get(i).getFechaIni() %>&ff=<%= proy.get(i).getFechaFin() %>';">
 				</td>
 				<tr>
 				<%

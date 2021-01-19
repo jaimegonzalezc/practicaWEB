@@ -19,12 +19,10 @@ public class ProyectoDao {
 
 	public void addProyecto(Proyecto proyecto) {
 		try {
+			System.out.println(proyecto.getFechaFin());
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into Empresa (Titulo,Descripcion,FechaIni,FechaFin) values (?, ?, ?, ?)");
-			preparedStatement.setString(1, proyecto.getTitulo());
-			preparedStatement.setString(2, proyecto.getDescripcion());
-			preparedStatement.setString(3, proyecto.getFechaIni());
-			preparedStatement.setString(4, proyecto.getFechaFin());
+					"insert into mydb.Proyectos (Titulo,Descripcion,FechaIni,FechaFin) values ('"+proyecto.getTitulo()+"','"+proyecto.getDescripcion()+"',"
+							+ "'"+proyecto.getFechaIni()+"','"+proyecto.getFechaFin()+"');");
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
@@ -38,11 +36,33 @@ public class ProyectoDao {
 		String titulo, fechaIni, fechaFin, descripcion;
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Poyectos \n"
-					+ "INNER JOIN mydb.Empleados_estan_proyectos ON mydb.Empleados_estan_proyectos.Poyectos_idPoyectos = mydb.Poyectos.idPoyectos\n"
+			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Proyectos \n"
+					+ "INNER JOIN mydb.Empleados_estan_proyectos ON mydb.Empleados_estan_proyectos.Proyectos_idProyectos = mydb.Proyectos.idProyectos\n"
 					+ "where mydb.Empleados_estan_proyectos.Empleados_Trabajadores_DNI = '" + dniUsuario + "';");
 			while (rs.next()) {
-				idProy = rs.getInt("Poyectos_idPoyectos");
+				idProy = rs.getInt("Proyectos_idProyectos");
+				titulo = rs.getString("Titulo");
+				fechaIni = rs.getString("FechaIni");
+				fechaFin = rs.getString("FechaFin");
+				descripcion = rs.getString("Descripcion");
+				Proyecto proyecto = new Proyecto(idProy, titulo, fechaIni, fechaFin, descripcion);
+				lista.add(proyecto);
+			}
+			return lista;
+		} catch (SQLException e) {
+		}
+		return null;
+	}
+	
+	public ArrayList<Proyecto> getTodosProyectos() {
+		ArrayList<Proyecto> lista = new ArrayList<Proyecto>();
+		int idProy;
+		String titulo, fechaIni, fechaFin, descripcion;
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Proyectos;");
+			while (rs.next()) {
+				idProy = rs.getInt("idProyectos");
 				titulo = rs.getString("Titulo");
 				fechaIni = rs.getString("FechaIni");
 				fechaFin = rs.getString("FechaFin");
@@ -61,7 +81,7 @@ public class ProyectoDao {
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement
-					.executeQuery("SELECT * FROM mydb.Empleados_estan_proyectos WHERE Poyectos_idPoyectos = " + idProy
+					.executeQuery("SELECT * FROM mydb.Empleados_estan_proyectos WHERE Proyectos_idProyectos = " + idProy
 							+ " AND Empleados_Trabajadores_DNI = '" + dniUsuario + "';");
 			while (rs.next()) {
 				horas = rs.getInt("Horas");
@@ -90,15 +110,39 @@ public class ProyectoDao {
 		return null;
 	}
 	
+	public void updateProyectos(Proyecto pro) {
+		try {
+			System.out.println(pro.getTitulo());
+			Statement statement = connection.createStatement();
+			
+			statement.executeQuery("UPDATE mydb.Proyectos SET Titulo='" + pro.getTitulo()
+					+ "',Descripcion='" + pro.getDescripcion() + "',FechaIni='" + pro.getFechaIni()
+					+ "',FechaFin='"+pro.getFechaFin()+"' WHERE idProyectos="+pro.getIdProyecto()+";");
+		} catch (SQLException e) {
+			System.out.println("Cagada shurmano1");
+		}
+	}
+	
 	public void updateHoras(String dniEmpleado, int idProy, int horas) {
 
 		try {
 			Statement statement = connection.createStatement();
 			statement.executeQuery("UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + horas
-					+ " WHERE Poyectos_idPoyectos = " + idProy + " and Empleados_Trabajadores_DNI = '" + dniEmpleado
+					+ " WHERE Poyectos_idProyectos = " + idProy + " and Empleados_Trabajadores_DNI = '" + dniEmpleado
 					+ "';");
 		} catch (SQLException e) {
 			System.out.println("Cagada shurmano");
 		}
 	}
+	
+	public void deleteProyecto(int idProyect) {
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("delete from mydb.Proyectos where idProyectos=?");
+			// Parameters start with 1  
+			preparedStatement.setInt(1, idProyect);
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+		}
+	}
+	
 }

@@ -67,7 +67,7 @@
 						<p class="card-text">Modifica la información de los proyectos</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">¡Modifica datos!</a>
+						<a href="editaproyectos.jsp" class="btn btn-success">¡Modifica datos!</a>
 					</div>
 				</div>
 			</div>
