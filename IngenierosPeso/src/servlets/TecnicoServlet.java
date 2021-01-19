@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.ProyectoDao;
+import util.UserDao;
 
 @WebServlet("/TecnicoServlet")
 public class TecnicoServlet extends HttpServlet {
@@ -24,8 +25,9 @@ public class TecnicoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		
-		String dni = (String) request.getParameter("dni");
+		
 		if (action.equals("getusuario")) {
+			String dni = (String) request.getParameter("dni");
 			request.setAttribute("dni", dni); 
             request.getRequestDispatcher("ficharHoras.jsp").forward(request, response);
 		}

@@ -36,6 +36,7 @@ public class ProyectoDao {
 	
 	public ArrayList<Proyecto> listProyectos(String dniUsuario) {
 		ArrayList<Proyecto> lista = new ArrayList<Proyecto>();
+		
 		int idProy;
 		String titulo, fechaIni, fechaFin, descripcion;
 		try {

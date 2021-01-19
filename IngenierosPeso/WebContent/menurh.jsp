@@ -31,7 +31,7 @@ String nombre = (String) request.getAttribute("nombre");
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a class="nav-link"
-						href="menu.jsp">Home <span class="sr-only">(current)</span>
+						href="menurh.jsp">Home <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					<li class="nav-item"><a class="nav-link" href="Logout">Logout</a>
@@ -101,7 +101,7 @@ String nombre = (String) request.getAttribute("nombre");
 							aplicación por empresa, proyectos y empleados.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Solicitar informe!</a>
+						<a href="Informes/gestioninformes.jsp" class="btn btn-success">Solicitar informe!</a>
 					</div>
 				</div>
 			</div>

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import clases.User;
@@ -31,7 +32,7 @@ public class UserDao {
 			preparedStatement.setString(7, user.getDepartamento());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -54,10 +55,35 @@ public class UserDao {
 				return usuario;
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
 
+	public ArrayList<User> getTecnicos() {
+		ArrayList<User> lista = new ArrayList<User>();
+		String dniDB, passwordDB, nombreDB, apellidoDB, correoDB, departamentoDB;
+		int numeroDB;
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Usuarios where Departamento='Tecnico';");
+			while (rs.next()) {
+				dniDB = rs.getString("DNI");
+				nombreDB = rs.getString("Nombre");
+				apellidoDB = rs.getString("Apellido");
+				numeroDB = rs.getInt("Telefono");
+				correoDB = rs.getString("Correo");
+				passwordDB = rs.getString("Contraseña");
+				departamentoDB = rs.getString("Departamento");
+				User usuario = new User(dniDB, nombreDB, apellidoDB, correoDB, passwordDB, departamentoDB, numeroDB);
+				lista.add(usuario);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+	
 	public void deleteUser(int userId) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("delete from users where userid=?");
@@ -95,7 +121,9 @@ public class UserDao {
 				
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
+		
 		return "Credenciales erróneas";
 	}
 	

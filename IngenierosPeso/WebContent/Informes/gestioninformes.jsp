@@ -10,9 +10,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Menú principal recursos humanos</title>
-<link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
+<link href="../menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="menuStyle/css/heroic-features.css" rel="stylesheet">
+<link href="../menuStyle/css/heroic-features.css" rel="stylesheet">
 <%
 String dni = (String) request.getAttribute("dni");
 String nombre = (String) request.getAttribute("nombre");
@@ -43,22 +43,20 @@ String nombre = (String) request.getAttribute("nombre");
 
 	<div class="container">
 		<header class="jumbotron my-4">
-			<!--  <h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript
-			
-			<p class="lead">Desde este menú principal, podrás gestionar todas
-				las funcionalidades del sistema.</p>
-			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>-->
+			<h1 class="display-3">Generador de informes</h1> 
+			<p class="lead">En este apartado vas a poder descargarte todos los datos de 
+			las distintas organizaciones.</p>
 		</header> 
 		<div class="row text-center">
 
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Añade proyectos</h4>
-						<p class="card-text">Aquí podrás añadir nuevos proyectos que tengamos en nuestro servicio.</p>
+						<h4 class="card-title">Informe sobre empleados</h4>
+						<p class="card-text">Solicita un informe detallado con los empleados</p>
 					</div>
 					<div class="card-footer">
-						<a href="altaproyecto.jsp" class="btn btn-success">¡Alta nueva!</a>
+						<a href="informeempleado.jsp" class="btn btn-success">¡Empleados!</a>
 					</div>
 				</div>
 			</div>
@@ -66,11 +64,11 @@ String nombre = (String) request.getAttribute("nombre");
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Edita proyecto</h4>
-						<p class="card-text">Modifica la información de los proyectos</p>
+						<h4 class="card-title">Informe sobre empresas</h4>
+						<p class="card-text">Solicita un informe detallado con las empresas</p>
 					</div>
 					<div class="card-footer">
-						<a href="editaproyectos.jsp" class="btn btn-success">¡Modifica datos!</a>
+						<a href="informeempresa.jsp" class="btn btn-success">¡Empresas!</a>
 					</div>
 				</div>
 			</div>
@@ -78,11 +76,11 @@ String nombre = (String) request.getAttribute("nombre");
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Borra proyectos</h4>
-						<p class="card-text">Aquí podrás dar de baja a los proyectos que se han acabado.</p>
+						<h4 class="card-title">Informe sobre proyectos</h4>
+						<p class="card-text">Solicita un informe detallado con los proyectos</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">¡Baja!</a>
+						<a href="informeproyecto.jsp" class="btn btn-success">¡Proyectos!</a>
 					</div>
 				</div>
 			</div>
