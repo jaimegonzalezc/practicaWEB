@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import='util.UserDao'%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,7 +16,18 @@
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 <%
 String dni = (String) request.getAttribute("dni");
-String nombre = (String) request.getAttribute("nombre");
+UserDao dao = new UserDao();
+String nombre = dao.getUser(dni).getNombre();
+Boolean dialibre = false;
+if (request.getAttribute("dialibre") != null)
+	dialibre = (Boolean) request.getAttribute("dialibre");
+if (dialibre) {
+%>
+<script>
+	alert("Calendario añadido con éxito");
+</script>
+<%
+}
 %>
 </head>
 
@@ -65,7 +77,9 @@ String nombre = (String) request.getAttribute("nombre");
 							responsables de Recursos Humanos.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Pedir días libres!</a>
+						<button class="btn btn-success"
+							onClick="location.href='CalendarioServlet?action=diaslibres&dni=<%=dni%>';">Pedir
+							días libres!</button>
 					</div>
 				</div>
 			</div>
@@ -79,7 +93,8 @@ String nombre = (String) request.getAttribute("nombre");
 					</div>
 					<div class="card-footer">
 						<button class="btn btn-success"
-				onClick="location.href='CalendarioServlet?action=getcalendario&dni=<%=dni%>';"> Consultar Calendario! </button>
+							onClick="location.href='CalendarioServlet?action=getcalendario&dni=<%=dni%>';">
+							Consultar Calendario!</button>
 					</div>
 				</div>
 			</div>

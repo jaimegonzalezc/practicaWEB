@@ -58,5 +58,22 @@ public class CalendarioDao {
 		}
 		return null;
 	}
+	
+	public void insertCalendario(Calendario calendario) {
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"INSERT INTO Calendario(FechaIni,FechaFin,Descripcion,Estado,Empleado_Usuarios_DNI,Recursos_humanos_Usuarios_DNI) VALUES (?, ?, ?, ?, ?, ?)");
+// Parameters start with 1
+			preparedStatement.setString(1, calendario.getFechaIni());
+			preparedStatement.setString(2, calendario.getFechaFin());
+			preparedStatement.setString(3, calendario.getDescripcion());
+			preparedStatement.setString(4, calendario.getEstado());
+			preparedStatement.setString(5, calendario.getDniEmp());
+			preparedStatement.setString(6, calendario.getDniRh());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 }
