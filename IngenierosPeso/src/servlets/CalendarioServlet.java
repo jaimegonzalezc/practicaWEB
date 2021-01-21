@@ -38,6 +38,13 @@ public class CalendarioServlet extends HttpServlet {
 			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("horasLibres.jsp").forward(request, response);
 		}
+		else if (action.equals("vacaciones")) {
+			String dni = (String) request.getParameter("dni");
+			request.setAttribute("dni", dni);
+			request.getRequestDispatcher("vacaciones.jsp").forward(request, response);
+		} else {
+			System.out.println("Error");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -66,6 +73,18 @@ public class CalendarioServlet extends HttpServlet {
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
 			request.getRequestDispatcher("menu.jsp").forward(request, response);		
+		}
+		else if (request.getParameter("vacaciones") != null) {
+			String fechaIni = request.getParameter("FechaIni");
+			String fechaFin = request.getParameter("FechaFin");
+			String dniUser = request.getParameter("dni");
+			Calendario calendario = new Calendario(fechaIni, fechaFin, "Vacaciones", "Pendiente", dniUser, "00000000A");
+			cal.insertCalendario(calendario);
+			request.setAttribute("dni", dniUser);
+			request.setAttribute("dialibre", true);
+			request.getRequestDispatcher("menu.jsp").forward(request, response);		
+		} else {
+			System.out.println("Error");
 		}
 		
 	}

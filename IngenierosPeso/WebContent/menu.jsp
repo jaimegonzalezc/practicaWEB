@@ -107,7 +107,9 @@ if (dialibre) {
 							vacaciones, que deberá ser tramitada por Recursos humanos.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Pedir vacaciones!</a>
+						<button class="btn btn-success"
+							onClick="location.href='CalendarioServlet?action=vacaciones&dni=<%=dni%>';">
+							Pedir vacaciones!</button>
 					</div>
 				</div>
 			</div>

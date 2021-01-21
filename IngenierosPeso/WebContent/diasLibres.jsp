@@ -45,7 +45,7 @@ String dni = (String) request.getAttribute("dni");
 				<label>Introduzca el motivo del día libre:</label> <input type="text" name="motivo" required>
 				<br> <label>Introduzca el día libre que desea en formato yyyy-mm-dd</label> <input
 					type=hidden name="dni" value=<%=dni%>> <input type="text"
-					name="FechaIni" required> <input type="submit" name="dialibre"
+					name="FechaIni" required> <input type="Enviar" name="dialibre"
 					value=submit>
 			</form>
 
