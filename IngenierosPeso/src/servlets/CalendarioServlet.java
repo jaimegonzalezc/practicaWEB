@@ -28,10 +28,15 @@ public class CalendarioServlet extends HttpServlet {
 			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("consultarCalendario.jsp").forward(request, response);
 		}
-		if (action.equals("diaslibres")) {
+		else if (action.equals("diaslibres")) {
 			String dni = (String) request.getParameter("dni");
 			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("diasLibres.jsp").forward(request, response);
+		}
+		else if (action.equals("horaslibres")) {
+			String dni = (String) request.getParameter("dni");
+			request.setAttribute("dni", dni);
+			request.getRequestDispatcher("horasLibres.jsp").forward(request, response);
 		}
 	}
 
@@ -46,9 +51,23 @@ public class CalendarioServlet extends HttpServlet {
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
-			request.getRequestDispatcher("menu.jsp").forward(request, response);
-			
+			request.getRequestDispatcher("menu.jsp").forward(request, response);		
 		}
+		else if (request.getParameter("horaslibres") != null) {
+			String fecha = request.getParameter("FechaIni");
+			String horaIni = request.getParameter("horaIni");
+			String horaFin = request.getParameter("horaFin");
+			String dniUser = request.getParameter("dni");
+			String motivo = request.getParameter("motivo");
+			String fechaIni = fecha + " " + horaIni;
+			String fechaFin = fecha + " " + horaFin;
+			Calendario calendario = new Calendario(fechaIni, fechaFin, motivo, "Pendiente", dniUser, "00000000A");
+			cal.insertCalendario(calendario);
+			request.setAttribute("dni", dniUser);
+			request.setAttribute("dialibre", true);
+			request.getRequestDispatcher("menu.jsp").forward(request, response);		
+		}
+		
 	}
 
 }

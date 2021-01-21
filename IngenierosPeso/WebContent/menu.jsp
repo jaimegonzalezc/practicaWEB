@@ -120,7 +120,9 @@ if (dialibre) {
 							horas del día por un motivo justificado.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Notificar ausencia!</a>
+						<button class="btn btn-success"
+							onClick="location.href='CalendarioServlet?action=getcalendario&dni=<%=dni%>';">
+							Notificar ausencia!</button>
 					</div>
 				</div>
 			</div>
