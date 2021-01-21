@@ -11,15 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 public class CalendarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public CalendarioServlet() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public CalendarioServlet() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
+
+		if (action.equals("getcalendario")) {
+			String dni = (String) request.getParameter("dni");
+			request.setAttribute("dni", dni);
+			request.getRequestDispatcher("consultarCalendario.jsp").forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

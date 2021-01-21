@@ -7,14 +7,13 @@
 <head>
 <%
 String dni = (String) request.getAttribute("dni");
-String nombre = (String) request.getAttribute("nombre");
 %>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Calendario de <%=nombre %></title>
+<title>Calendario</title>
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
@@ -43,7 +42,7 @@ String nombre = (String) request.getAttribute("nombre");
 			</div>
 		</div>
 	</nav>
-	<table>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th scope="col">Fecha de inicio</th>
@@ -54,9 +53,21 @@ String nombre = (String) request.getAttribute("nombre");
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<a href="menu.jsp" class="btn btn-success">Volver al menú</a>
-			</tr>
+			<%
+				CalendarioDao calendariodao = new CalendarioDao();
+				ArrayList<Calendario> proys = calendariodao.listCalendario(dni);
+				for (int i = 0; i < proys.size(); i++) {
+				%>
+				<tr>
+				<td><%= proys.get(i).getFechaIni() %></td>
+				<td><%= proys.get(i).getFechaFin() %></td>
+				<td><%= proys.get(i).getDescripcion() %></td>
+				<td><%= proys.get(i).getEstado() %></td>
+				<td><%= proys.get(i).getDniRh() %></td>
+				<tr>
+				<%
+				}
+				%>
 		</tbody>
 	</table>
 	<div class="row text-center">
@@ -77,5 +88,7 @@ String nombre = (String) request.getAttribute("nombre");
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
+
+
+

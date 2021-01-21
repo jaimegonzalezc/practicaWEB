@@ -78,7 +78,8 @@ String nombre = (String) request.getAttribute("nombre");
 							actividades.</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-success">Consultar calendario!</a>
+						<button class="btn btn-success"
+				onClick="location.href='CalendarioServlet?action=getcalendario&dni=<%=dni%>';"> Consultar Calendario! </button>
 					</div>
 				</div>
 			</div>
