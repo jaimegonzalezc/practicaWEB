@@ -54,7 +54,7 @@ public class CalendarioServlet extends HttpServlet {
 			String fechaIni = request.getParameter("FechaIni");
 			String dniUser = request.getParameter("dni");
 			String motivo = request.getParameter("motivo");
-			Calendario calendario = new Calendario(fechaIni, fechaIni, motivo, "Pendiente", dniUser, "00000000A");
+			Calendario calendario = new Calendario(fechaIni, fechaIni, motivo, "Pendiente", dniUser, null);
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
@@ -68,7 +68,7 @@ public class CalendarioServlet extends HttpServlet {
 			String motivo = request.getParameter("motivo");
 			String fechaIni = fecha + " " + horaIni;
 			String fechaFin = fecha + " " + horaFin;
-			Calendario calendario = new Calendario(fechaIni, fechaFin, motivo, "Pendiente", dniUser, "00000000A");
+			Calendario calendario = new Calendario(fechaIni, fechaFin, motivo, "Pendiente", dniUser, null);
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
@@ -78,7 +78,7 @@ public class CalendarioServlet extends HttpServlet {
 			String fechaIni = request.getParameter("FechaIni");
 			String fechaFin = request.getParameter("FechaFin");
 			String dniUser = request.getParameter("dni");
-			Calendario calendario = new Calendario(fechaIni, fechaFin, "Vacaciones", "Pendiente", dniUser, "00000000A");
+			Calendario calendario = new Calendario(fechaIni, fechaFin, "Vacaciones", "Pendiente", dniUser, null);
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);

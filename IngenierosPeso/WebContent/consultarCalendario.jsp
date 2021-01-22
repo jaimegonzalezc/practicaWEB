@@ -65,7 +65,7 @@ String dni = (String) request.getAttribute("dni");
 				<td><%= proys.get(i).getEstado() %></td>
 				<% 
 				String dniAtendido = "-";
-				if (!proys.get(i).getDniRh().equals("00000000A")) dniAtendido = proys.get(i).getDniRh(); %>
+				if (proys.get(i).getDniRh() != null) dniAtendido = proys.get(i).getDniRh(); %>
 				<td><%= dniAtendido %></td>
 				<tr>
 				<%
