@@ -13,11 +13,7 @@
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
-<%
-String dni = (String) request.getAttribute("dni");
-String nombre = (String) request.getAttribute("nombre");
 
-%>
 </head>
 
 <body>
@@ -43,69 +39,40 @@ String nombre = (String) request.getAttribute("nombre");
 	</nav>
 
 	<div class="container">
-		<header class="jumbotron my-4">
-			<h1 class="display-3">
-				Bienvenido
-				<%=nombre%></h1>
-
+		<header class="jumbotron my-2">
+			<!--  <h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript
+			
 			<p class="lead">Desde este menú principal, podrás gestionar todas
 				las funcionalidades del sistema.</p>
-			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>
-		</header>
+			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>-->
+		</header> 
 		<div class="row text-center">
 
-			<div class="col-lg-3 col-md-6 mb-4">
+			<div class="col-lg-3 col-md-6 mb-2">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Atender peticiones de empleados</h4>
-						<p class="card-text">Aquí podrás gestionar las peticiones
-							realizadas por los empleados.</p>
+						<h4 class="card-title">Añade empleados</h4>
+						<p class="card-text">Aquí podrás añadir nuevos empleados que haya ingresado en nuestro servicio.</p>
 					</div>
 					<div class="card-footer">
-						<a href="gestionaempleados.jsp" class="btn btn-success">Gestionar peticiones!</a>
+						<a href="altaempleado.jsp" class="btn btn-success">¡Alta nueva!</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 mb-4">
+			<div class="col-lg-3 col-md-6 mb-2">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Empresas</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver
-							la información de las empresas.</p>
+						<h4 class="card-title">Edita empleados</h4>
+						<p class="card-text">¿Han modificado su dirección?¿Tienen un nuevo número de contacto?¿Se
+						han ido de la empresa? Actualízalo</p>
 					</div>
 					<div class="card-footer">
-						<a href="gestionempresa.jsp" class="btn btn-success">Gestionar
-							empresas!</a>
+						<a href="editaempleados.jsp" class="btn btn-success">¡Modifica datos!</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 mb-4">
-				<div class="card h-100">
-					<div class="card-body">
-						<h4 class="card-title">Proyectos</h4>
-						<p class="card-text">Aquí podrás actualizar, modificar y ver
-							la información de los proyectos.</p>
-					</div>
-					<div class="card-footer">
-						<a href="gestionproyectos.jsp" class="btn btn-success">Gestionar proyectos!</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 mb-4">
-				<div class="card h-100">
-					<div class="card-body">
-						<h4 class="card-title">Solicitar informe</h4>
-						<p class="card-text">Aquí podrás solicitar informes a la
-							aplicación por empresa, proyectos y empleados.</p>
-					</div>
-					<div class="card-footer">
-						<a href="Informes/gestioninformes.jsp" class="btn btn-success">Solicitar informe!</a>
-					</div>
-				</div>
-			</div>
 
 		</div>
 

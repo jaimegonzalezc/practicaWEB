@@ -33,6 +33,7 @@ public class CalendarioDao {
 				return calendario;
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}

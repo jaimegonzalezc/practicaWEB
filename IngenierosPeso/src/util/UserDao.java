@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import clases.Empresa;
 import clases.User;
 
 public class UserDao {
@@ -84,13 +85,14 @@ public class UserDao {
 		return lista;
 	}
 	
-	public void deleteUser(int userId) {
+	public void deleteUser(String dni) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("delete from users where userid=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("delete from mydb.Usuarios where DNI=?");
 			// Parameters start with 1
-			preparedStatement.setInt(1, userId);
+			preparedStatement.setString(1, dni);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -127,6 +129,33 @@ public class UserDao {
 		return "Credenciales erróneas";
 	}
 	
+	
+	public void updateUser(User user) {
+		try {
+			/*Statement statement = connection.createStatement();
+			statement.executeQuery("UPDATE mydb.Empresa SET Telefono="+empr.getNumero()+" where CIF =" + empr.getCIF() + ";");
+			*/
+			String dni = user.getDNI();
+			String nom = user.getNombre();
+			String ape = user.getApellidos();
+			int tlf = user.getNumero();
+			String correo = user.getCorreo();
+			
+			System.out.println(correo);
+			
+			PreparedStatement ps = connection.prepareStatement("update mydb.Usuarios set Nombre=?,Apellido=?,Telefono=?,Correo=? where DNI=?");
+			//ps.setString(1, dni);
+			ps.setString(1, nom);
+			ps.setString(2, ape);
+			ps.setInt(3, tlf);
+			ps.setString(4, correo);
+			ps.setString(5, dni);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	 
 	/*

@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 function downloadCSV(csv, filename) {
     var csvFile;
     var downloadLink;

@@ -158,7 +158,6 @@ public class ProyectoDao {
 			//preparedStatement.setString(3, dniEmpleado);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
-			System.out.println("HECHO");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -171,6 +170,7 @@ public class ProyectoDao {
 			preparedStatement.setInt(1, idProyect);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

@@ -33,7 +33,7 @@ public class EmpresaDao {
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
-
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -56,16 +56,17 @@ public class EmpresaDao {
 				return empresa;
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
 	
 	public boolean actualizaEmpresa(Empresa empr) {
 		try {
-			Statement statement = connection.createStatement();
+			/*Statement statement = connection.createStatement();
 			statement.executeQuery("UPDATE mydb.Empresa SET Telefono="+empr.getNumero()+" where CIF =" + empr.getCIF() + ";");
-			
-			/*String cif = empr.getCIF();
+			*/
+			String cif = empr.getCIF();
 			String nom = empr.getNombre();
 			String dir = empr.getDireccion();
 			int cp = empr.getCP();
@@ -73,9 +74,8 @@ public class EmpresaDao {
 			String prov = empr.getProvincia();
 			int number= empr.getNumero();
 			
-			System.out.println(cif);
 			
-			String sql = "UPDATE mydb.Empresa set CIF=?,Nombre=?,Direccion=?,CP=?,Ciudad=?,Provincia=?,Telefono=? WHERE CIF="+cif;
+			String sql = "UPDATE mydb.Empresa set CIF=?,Nombre=?,Direccion=?,CP=?,Ciudad=?,Provincia=?,Telefono=? WHERE CIF=?";
 			
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, cif);
@@ -85,19 +85,15 @@ public class EmpresaDao {
 			ps.setString(5, ciu);
 			ps.setString(6, prov);
 			ps.setInt(7, number);
+			ps.setString(8, cif);
 							
-			boolean i = ps.executeUpdate()>0;
-			
-			if(i) {
-				System.out.println("Si");
-			} else {
-				System.out.println("NO");
-			}
+			ps.executeUpdate();
 			
 			ps.close();
-			System.out.println("HOLA");*/
+			System.out.println("HOLA");
 			return true;
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return false;
 	}
@@ -123,6 +119,7 @@ public class EmpresaDao {
 				empr.add(empresa);
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 
 		return empr;
@@ -135,73 +132,8 @@ public class EmpresaDao {
 			preparedStatement.setString(1, empresaId);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-
-	public String logInAuthentication(String userId, String pswd) {
-		PreparedStatement preparedStatement = null;
-		String dniDB = "";
-		String passwordDB = "";
-		String depart ="";
-		try {
-
-			Statement statement = connection.createStatement();
-			String dniRegexp = "\\d{8}[A-HJ-NP-TV-Z]"; // Prevencion simple de SQL Injection
-			if (Pattern.matches(dniRegexp, userId)) {
-				ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Usuarios where DNI = '" + userId + "';");
-				while (rs.next()) {
-					dniDB = rs.getString("DNI");
-					passwordDB = rs.getString("Contraseña");
-					depart = rs.getString("Departamento");
-					
-				}
-			}
-			if (pswd.equals(passwordDB)) {
-				if(depart.equals("Recursos Humanos")) {
-					return "RRHH";
-				} else {
-					return "TEC";
-				}
-				
-			}
-		} catch (SQLException e) {
-		}
-		return "Credenciales erróneas";
-	}
-	/*
-	 * public void updateUser(User user) { try { PreparedStatement preparedStatement
-	 * = connection.
-	 * prepareStatement("update users set firstname=?, lastname=?, email=?" +
-	 * "where userid=?"); // Parameters start with 1 preparedStatement.setString(1,
-	 * user.getNombre()); preparedStatement.setString(2, user.getApellidos());
-	 * preparedStatement.setString(3, user.getCorreo());
-	 * preparedStatement.setString(4, user.getDNI());
-	 * preparedStatement.executeUpdate(); } catch (SQLException e) {
-	 * Log.logdb.error("SQL Exception: " + e); } }
-	 * 
-	 * public List<User> getAllUsers() { List<User> userdb = new ArrayList<User>();
-	 * if (connection != null) { try { Statement statement =
-	 * connection.createStatement(); ResultSet rs =
-	 * statement.executeQuery("select * from users;"); while (rs.next()) { User user
-	 * = new User(); user.setDNI(rs.getString("userid"));
-	 * user.setNombre(rs.getString("firstname"));
-	 * user.setApellidos(rs.getString("lastname"));
-	 * user.setCorreo(rs.getString("email")); userdb.add(user); } } catch
-	 * (SQLException e) { Log.logdb.error("SQL Exception: " + e); } return userdb; }
-	 * else { Log.logdb.error("No hay conexion con la bbdd"); return null; }
-	 * 
-	 * }
-	 * 
-	 * public User getUserById(int userId) { User user = new User(); try {
-	 * PreparedStatement preparedStatement =
-	 * connection.prepareStatement("select * from users where userid=?");
-	 * preparedStatement.setInt(1, userId); ResultSet rs =
-	 * preparedStatement.executeQuery(); if (rs.next()) {
-	 * user.setUserid(rs.getInt("userid"));
-	 * user.setFirstName(rs.getString("firstname"));
-	 * user.setLastName(rs.getString("lastname")); user.setDob(rs.getDate("dob"));
-	 * user.setEmail(rs.getString("email")); } } catch (SQLException e) {
-	 * Log.logdb.error("SQL Exception: " + e); } return user; }
-	 */
 
 }
