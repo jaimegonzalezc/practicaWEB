@@ -112,21 +112,21 @@ INSERT INTO Empresa VALUES ('B86813110', '09 MICRAS SL', 'C/ Veronica, Numero 55
 
 
 -- Aqui se inicializan datos de proyectos
-INSERT INTO Poyectos VALUES (1, '2021-01-2 11:00:00', '2021-01-18 20:00:00', 'Descripcion del proyecto numero 1'),
-(2, '2021-01-2 10:00:00', '2021-01-8 19:00:00', 'Descripcion del proyecto numero 2'),
-(3, '2021-01-6 10:00:00', '2021-01-16 21:00:00', 'Descripcion del proyecto numero 3'),
-(4, '2021-01-1 11:00:00', '2021-01-14 20:00:00', 'Descripcion del proyecto numero 4'),
-(5, '2021-01-6 12:00:00', '2021-01-13 21:00:00', 'Descripcion del proyecto numero 5'),
-(6, '2021-01-3 11:00:00', '2021-01-22 21:00:00', 'Descripcion del proyecto numero 6');
+INSERT INTO Proyectos VALUES (1, 'Creación Programa gestión' , 'Descripcion del proyecto numero 1', '2021-01-2', '2021-01-18'),
+(2, 'Creación base de datos' , 'Descripcion del proyecto numero 2','2021-01-2', '2021-01-8'),
+(3, 'Mejora SGBD propietario', 'Descripcion del proyecto numero 3', '2021-01-6', '2021-01-16'),
+(4, 'Creación Página Web Pública', 'Descripcion del proyecto numero 4', '2021-01-1', '2021-01-14'),
+(5, 'Aplicación Web Gestión Servidores', 'Descripcion del proyecto numero 5', '2021-01-6', '2021-01-13'),
+(6, 'Desarrollo librería Java propietaria', 'Descripcion del proyecto numero 6', '2021-01-3', '2021-01-22');
 
 
 -- Aqui se inicializan datos de empresas en proyectos
-INSERT INTO Empresa_tiene_proyectos VALUES ('B84452978', 1),
-('B86562311', 2),
-('B86813110', 3),
-('B86904208', 4),
-('B86949401', 5),
-('B87219895', 6);
+INSERT INTO Empresa_tiene_proyectos VALUES (1, 'B84452978'),
+(2, 'B86562311'),
+(3, 'B86813110'),
+(4, 'B86904208'),
+(5, 'B86949401'),
+(6, 'B87219895');
 
 
 -- Aqui se inicializan datos de empleados en proyectos
