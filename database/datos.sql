@@ -183,4 +183,14 @@ INSERT INTO Empleados_estan_proyectos VALUES (6, '04736798V', 18),
 (6, '99629091Z', 5);
 
 
+-- Aqui se inicializan datos de Calendario
+INSERT INTO Calendario
+VALUES ('2021-01-20 10:00:00','2021-01-20 12:30:00','Cita Médica','Pendiente','09192134T', ''),
+('2021-01-21 08:00:00','2021-01-22 08:00:00','Baja por Enfermedad','Pendiente','14031482X', ''),
+('2021-01-19 08:00:00','2021-01-26 08:00:00','Vacaciones','Pendiente','29178375T', ''),
+('2021-01-25 14:00:00','2021-01-25 18:00:00','Asistencia Actividad Escolar Hijo/a','Pendiente','43129384Z', ''),
+('2021-01-29 08:00:00','2021-02-19 08:00:00','Vacaciones','Pendiente','88582816H', '');
+
+
+
 
