@@ -46,3 +46,5 @@ INFO    2021-01-25 19:21:31,994 [http-nio-8080-exec-6] util.DbUtil  - conectado
 INFO    2021-01-25 19:21:39,760 [http-nio-8080-exec-15] util.DbUtil  - conectado
 INFO    2021-01-25 19:21:39,803 [http-nio-8080-exec-15] util.DbUtil  - conectado
 INFO    2021-01-25 19:21:39,804 [http-nio-8080-exec-15] util.DbUtil  - El usuario 09192134T ha fichado horas en el proyecto 6
+INFO    2021-01-25 20:55:53,862 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 20:55:53,862 [http-nio-8080-exec-9] util.DbUtil  - conectado

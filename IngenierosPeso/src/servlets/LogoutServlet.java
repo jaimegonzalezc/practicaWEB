@@ -34,11 +34,14 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		HttpSession session = request.getSession();
-		session.invalidate();
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
-		log.info("Usuario ha cerrado sesión.");
+		try {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			response.sendRedirect(response.encodeRedirectURL("exNLog.html"));
+		} catch(Exception e) {
+			response.sendRedirect(response.encodeRedirectURL("eNLog.html"));
+		}
 	}
 
 	/**

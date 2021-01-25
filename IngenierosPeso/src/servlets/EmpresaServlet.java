@@ -45,32 +45,46 @@ public class EmpresaServlet extends HttpServlet {
 
 		
 		if (action.equals("alta")) {
-			
-			String nombre = (String) request.getParameter("nombre");
-			String direccion = (String) request.getParameter("direccion");
-			int cp = Integer.parseInt(request.getParameter("CP"));
-			String ciudad = (String) request.getParameter("ciudad");
-			String provincia = (String) request.getParameter("provincia");
-			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			Empresa empresa = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
-			dao.addEmpresa(empresa);
-            request.getRequestDispatcher("gestionempresa.jsp").forward(request, response);
-            log.info("Dada de alta una nueva empresa.");
+			try{
+				String nombre = (String) request.getParameter("nombre");
+				String direccion = (String) request.getParameter("direccion");
+				int cp = Integer.parseInt(request.getParameter("CP"));
+				String ciudad = (String) request.getParameter("ciudad");
+				String provincia = (String) request.getParameter("provincia");
+				int telefono = Integer.parseInt(request.getParameter("telefono"));
+				Empresa empresa = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
+				dao.addEmpresa(empresa);
+				request.getRequestDispatcher("gestionempresa.jsp").forward(request, response);
+				log.info("Dada de alta una nueva empresa.");
+			} catch(Exception e) {
+				response.sendRedirect(response.encodeRedirectURL("eAlta.html"));
+				log.error(e.getMessage());
+			}
 		} else if(action.equals("elimina")) {
-			dao.deleteEmpresa(cif);
-			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
-			log.info("Eliminada empresa "+cif);
+			try{
+				dao.deleteEmpresa(cif);
+				request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
+				log.info("Eliminada empresa "+cif);
+			}catch(Exception e) {
+				response.sendRedirect(response.encodeRedirectURL("eAlta.html"));
+				log.error(e.getMessage());
+			}
 		} else if(action.equals("editar")) {
-			String nombre = (String) request.getParameter("nombre");
-			String direccion = (String) request.getParameter("direccion");
-			int cp = Integer.parseInt(request.getParameter("CP"));
-			String ciudad = (String) request.getParameter("ciudad");
-			String provincia = (String) request.getParameter("provincia");
-			int telefono = Integer.parseInt(request.getParameter("telefono"));
-			Empresa empr = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
-			dao.actualizaEmpresa(empr);
-			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
-			log.info("Han editado la empresa "+cif);
+			try {
+				String nombre = (String) request.getParameter("nombre");
+				String direccion = (String) request.getParameter("direccion");
+				int cp = Integer.parseInt(request.getParameter("CP"));
+				String ciudad = (String) request.getParameter("ciudad");
+				String provincia = (String) request.getParameter("provincia");
+				int telefono = Integer.parseInt(request.getParameter("telefono"));
+				Empresa empr = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
+				dao.actualizaEmpresa(empr);
+				request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
+				log.info("Han editado la empresa "+cif);
+			} catch (Exception e) {
+				response.sendRedirect(response.encodeRedirectURL("eAlta.html"));
+				log.error(e.getMessage());
+			}
 		}
 	}
 

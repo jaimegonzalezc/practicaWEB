@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Menú principal empleado</title>
+<title>Insertar usuario</title>
 <link href="menuStyle/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">

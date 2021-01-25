@@ -35,20 +35,33 @@ public class ProyectoServlet extends HttpServlet {
 		int idpro = Integer.parseInt(id);
 		
 		if(action.equals("elimina")) {	
-			proyDao.deleteProyecto(idpro);
-			request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
-			log.info("Proyecto "+ id +" eliminado.");
+			try {
+				proyDao.deleteProyecto(idpro);
+				request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
+				log.info("Proyecto "+ id +" eliminado.");
+			} catch (Exception e) {
+				//TODO: handle exception
+				response.sendRedirect(response.encodeRedirectURL("eBorrado.html"));
+				log.error(e.getMessage());
+			}
+			
 		} else if(action.equals("editar")) {
-			String titulo = (String) request.getParameter("titulo");
-			String desc = (String) request.getParameter("desc");
-			String fini = (String) request.getParameter("fi");
-			String ffin = (String) request.getParameter("ff");
+			try {
+				String titulo = (String) request.getParameter("titulo");
+				String desc = (String) request.getParameter("desc");
+				String fini = (String) request.getParameter("fi");
+				String ffin = (String) request.getParameter("ff");
+				
+				Proyecto pro = new Proyecto(idpro,titulo,fini,ffin,desc);
+				
+				proyDao.updateProyectos(pro);
+				request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
+				log.info("Proyecto "+ id +" editado.");
+			} catch (Exception e) {
+				response.sendRedirect(response.encodeRedirectURL("eEditar.html"));
+				log.error(e.getMessage());
+			}
 			
-			Proyecto pro = new Proyecto(idpro,titulo,fini,ffin,desc);
-			
-			proyDao.updateProyectos(pro);
-			request.getRequestDispatcher("editaproyectos.jsp").forward(request, response);
-			log.info("Proyecto "+ id +" editado.");
 		}
 	}
 
@@ -56,31 +69,29 @@ public class ProyectoServlet extends HttpServlet {
 		String action = request.getParameter("action");
 
         if(action.equals("alta")) {
-        	String Titulo = (String) request.getParameter("Titulo");
-    		String FIni = (String) request.getParameter("FI");
-    		String FFin = (String) request.getParameter("FF");
-    		String Descr = (String) request.getParameter("Descr");
-    		String cif = (String) request.getParameter("CIF");
-    		int tamaño = proyDao.getTodosProyectos().size();
-			int ultpro = proyDao.getTodosProyectos().get(tamaño-1).getIdProyecto();
-    		
-			Proyecto proyec = new Proyecto(ultpro+1,Titulo,FIni,FFin,Descr);
-			proyDao.addProyecto(proyec,cif,ultpro+1);
-            request.getRequestDispatcher("gestionproyectos.jsp").forward(request, response);
+			try {
+				String Titulo = (String) request.getParameter("Titulo");
+				String FIni = (String) request.getParameter("FI");
+				String FFin = (String) request.getParameter("FF");
+				String Descr = (String) request.getParameter("Descr");
+				String cif = (String) request.getParameter("CIF");
+				int tamaño = proyDao.getTodosProyectos().size();
+				int ultpro = proyDao.getTodosProyectos().get(tamaño-1).getIdProyecto();
+				
+				Proyecto proyec = new Proyecto(ultpro+1,Titulo,FIni,FFin,Descr);
+				proyDao.addProyecto(proyec,cif,ultpro+1);
+				request.getRequestDispatcher("gestionproyectos.jsp").forward(request, response);
+				
+				log.info("Nuevo proyecto.");
+			} catch (Exception e) {
+				//TODO: handle exception
+				response.sendRedirect(response.encodeRedirectURL("eAlta.html"));
+				log.error(e.getMessage());
+
+			}
+        	
             
-            log.info("Nuevo proyecto.");
-            
-		} else if(action.equals("fichar")) {
-			String tmp = request.getParameter("idProy");
-	        String aux = request.getParameter("horasDedicadas");	
-	        int horasDedicadas = Integer.parseInt(aux), idProy = Integer.parseInt(tmp);
-	        String dni = (String) request.getParameter("dni");
-	        proyDao.updateHoras(dni, idProy, horasDedicadas);
-	        request.setAttribute("dni", dni); 
-	        request.getRequestDispatcher("/ficharHoras.jsp").forward(request, response);
-	        log.info("Fichadas horas del día anterior.");
-		}
-        
+		} 
 	}
 
 }
