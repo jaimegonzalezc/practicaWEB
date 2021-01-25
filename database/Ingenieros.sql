@@ -154,7 +154,7 @@ USE `mydb`;
 DELIMITER $$
 USE `mydb`$$
 CREATE
-DEFINER=`root`@`%`
+DEFINER=`root`@`localhost`
 TRIGGER `mydb`.`Usuarios_AI`
 AFTER INSERT ON `mydb`.`Usuarios`
 FOR EACH ROW
@@ -169,7 +169,7 @@ END$$
 
 USE `mydb`$$
 CREATE
-DEFINER=`root`@`%`
+DEFINER=`root`@`localhost`
 TRIGGER `mydb`.`Usuarios_AU`
 AFTER UPDATE ON `mydb`.`Usuarios`
 FOR EACH ROW
