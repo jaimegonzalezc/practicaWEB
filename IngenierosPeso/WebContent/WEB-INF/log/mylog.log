@@ -1,0 +1,48 @@
+INFO    2021-01-25 17:53:53,226 [http-nio-8080-exec-7] util.DbUtil  - HOLAAA
+INFO    2021-01-25 18:06:30,798 [http-nio-8080-exec-3] util.DbUtil  - conectado
+INFO    2021-01-25 18:06:32,143 [http-nio-8080-exec-3] util.DbUtil  - conectado
+INFO    2021-01-25 18:06:36,819 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 18:06:36,834 [http-nio-8080-exec-6] util.DbUtil  - Consulta de calendario.
+INFO    2021-01-25 18:09:28,053 [http-nio-8080-exec-4] util.DbUtil  - conectado
+INFO    2021-01-25 18:09:52,005 [http-nio-8080-exec-1] util.DbUtil  - conectado
+INFO    2021-01-25 18:09:52,036 [http-nio-8080-exec-1] util.DbUtil  - conectado
+INFO    2021-01-25 18:09:54,877 [http-nio-8080-exec-4] util.DbUtil  - conectado
+INFO    2021-01-25 18:09:54,882 [http-nio-8080-exec-4] util.DbUtil  - Consulta de calendario.
+INFO    2021-01-25 18:10:26,701 [http-nio-8080-exec-10] util.DbUtil  - conectado
+INFO    2021-01-25 18:10:26,729 [http-nio-8080-exec-10] util.DbUtil  - conectado
+INFO    2021-01-25 18:10:27,983 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 18:10:27,984 [http-nio-8080-exec-6] util.DbUtil  - Consulta de calendario.
+INFO    2021-01-25 18:11:36,160 [http-nio-8080-exec-4] util.DbUtil  - conectado
+INFO    2021-01-25 18:11:36,226 [http-nio-8080-exec-4] util.DbUtil  - conectado
+INFO    2021-01-25 18:11:38,821 [http-nio-8080-exec-5] util.DbUtil  - conectado
+INFO    2021-01-25 18:11:38,827 [http-nio-8080-exec-5] util.DbUtil  - Consulta de calendario.
+INFO    2021-01-25 18:51:04,935 [http-nio-8080-exec-5] util.DbUtil  - conectado
+INFO    2021-01-25 18:51:05,014 [http-nio-8080-exec-5] util.DbUtil  - conectado
+INFO    2021-01-25 18:51:05,017 [http-nio-8080-exec-5] util.DbUtil  - Ha iniciado sesión el técnico 09192134T
+INFO    2021-01-25 18:51:11,659 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 18:51:11,697 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 19:00:04,350 [http-nio-8080-exec-9] util.DbUtil  - conectado
+INFO    2021-01-25 19:00:04,395 [http-nio-8080-exec-9] util.DbUtil  - Nuevo proyecto.
+INFO    2021-01-25 19:05:11,953 [http-nio-8080-exec-4] util.DbUtil  - conectado
+INFO    2021-01-25 19:05:47,265 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 19:05:47,297 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 19:05:47,298 [http-nio-8080-exec-8] util.DbUtil  - Ha iniciado sesión el técnico 09192134T
+INFO    2021-01-25 19:05:50,588 [http-nio-8080-exec-1] util.DbUtil  - conectado
+INFO    2021-01-25 19:05:50,611 [http-nio-8080-exec-1] util.DbUtil  - conectado
+INFO    2021-01-25 19:07:33,886 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:07:33,937 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:15:04,293 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 19:15:04,303 [http-nio-8080-exec-8] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 04547919Z
+INFO    2021-01-25 19:15:30,891 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:15:30,921 [http-nio-8080-exec-6] util.DbUtil  - Se ha dado de alta un nuevo usuario
+INFO    2021-01-25 19:18:37,444 [http-nio-8080-exec-11] util.DbUtil  - conectado
+INFO    2021-01-25 19:18:37,599 [http-nio-8080-exec-11] util.DbUtil  - conectado
+INFO    2021-01-25 19:18:37,760 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:18:37,778 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:20:50,649 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 19:20:50,672 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 19:21:31,866 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:21:31,994 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 19:21:39,760 [http-nio-8080-exec-15] util.DbUtil  - conectado
+INFO    2021-01-25 19:21:39,803 [http-nio-8080-exec-15] util.DbUtil  - conectado
+INFO    2021-01-25 19:21:39,804 [http-nio-8080-exec-15] util.DbUtil  - El usuario 09192134T ha fichado horas en el proyecto 6

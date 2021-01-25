@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
+import org.apache.log4j.Logger;
 
 import clases.Empresa;
 
 public class EmpresaDao {
 
 	private Connection connection;
+	static final Logger log = Logger.getLogger(DbUtil.class);
 
 	public EmpresaDao() {
 		connection = DbUtil.getConnection();
@@ -33,12 +34,11 @@ public class EmpresaDao {
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 	}
 
 	public Empresa getEmpresa(String empresaId) {
-		PreparedStatement preparedStatement = null;
 		String cifDB, nombreDB, direccionDB, ciudadDB, provinciaDB;
 		int cpDB, numeroDB;
 		try {
@@ -55,17 +55,15 @@ public class EmpresaDao {
 				Empresa empresa = new Empresa(cifDB, nombreDB, direccionDB, cpDB, ciudadDB, provinciaDB, numeroDB);
 				return empresa;
 			}
+		rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
 	
 	public boolean actualizaEmpresa(Empresa empr) {
 		try {
-			/*Statement statement = connection.createStatement();
-			statement.executeQuery("UPDATE mydb.Empresa SET Telefono="+empr.getNumero()+" where CIF =" + empr.getCIF() + ";");
-			*/
 			String cif = empr.getCIF();
 			String nom = empr.getNombre();
 			String dir = empr.getDireccion();
@@ -73,7 +71,6 @@ public class EmpresaDao {
 			String ciu = empr.getCiudad();
 			String prov = empr.getProvincia();
 			int number= empr.getNumero();
-			
 			
 			String sql = "UPDATE mydb.Empresa set CIF=?,Nombre=?,Direccion=?,CP=?,Ciudad=?,Provincia=?,Telefono=? WHERE CIF=?";
 			
@@ -93,13 +90,12 @@ public class EmpresaDao {
 			System.out.println("HOLA");
 			return true;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return false;
 	}
 	
 	public ArrayList<Empresa> getTodasEmpresas() {
-		PreparedStatement preparedStatement = null;
 		ArrayList<Empresa> empr = new ArrayList<Empresa>();
 		String cifDB, nombreDB, direccionDB, ciudadDB, provinciaDB;
 		int cpDB, numeroDB;
@@ -118,8 +114,9 @@ public class EmpresaDao {
 				Empresa empresa = new Empresa(cifDB,nombreDB,direccionDB,cpDB,ciudadDB,provinciaDB,numeroDB);
 				empr.add(empresa);
 			}
+			rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 
 		return empr;
@@ -131,8 +128,9 @@ public class EmpresaDao {
 			// Parameters start with 1
 			preparedStatement.setString(1, empresaId);
 			preparedStatement.executeUpdate();
+			preparedStatement.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 	}
 

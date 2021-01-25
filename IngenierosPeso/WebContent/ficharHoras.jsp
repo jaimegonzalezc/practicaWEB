@@ -68,13 +68,13 @@ String nombre = (String) request.getAttribute("nombre");
 	<div class="row text-center">
 
 		<div class="container">
-			<form action="TecnicoServlet&action=fichar" method="post">
+			<form name="form" action="TecnicoServlet?action=fichar" method="post">
 				<label>Introduzca el número de horas que ha dedicado al
 					proyecto elegido:</label> <input type="number" max=8 name="horasDedicadas">
 				<br> <label>Seleccione el Id del proyecto a modificar</label> <input
 					type=hidden name="DNI" value=<%=dni%>> <input type="number"
-					name="idProy" min="1" required> <input type="submit"
-					value=submit>
+					name="idProy" min="1" required> 
+					<input type="submit" value=submit>
 			</form>
 
 		</div>

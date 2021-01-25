@@ -19,7 +19,7 @@
 <div class="container">
 		<header class="jumbotron my-4">
 			<h1 class="display-3">Da de alta un nuevo proyecto</h1>
-<form name="form" action="ProyectoServlet?action=alta" method="post" onsubmit="return validate()">
+<form name="form" action="TecnicoServlet?action=alta" method="post" onsubmit="return validate()">
 	CIF de empresa:<input type="text" name="CIF"><br>
 	Titulo: <input type="text" name="Titulo"><br>
 	Descripcion: <input type="text" name="Descr"><br>

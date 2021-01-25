@@ -6,20 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 
 import clases.Calendario;
-import clases.Proyecto;
 
 public class CalendarioDao {
 
 	private Connection connection;
+	static final Logger log = Logger.getLogger(DbUtil.class);
 
 	public CalendarioDao() {
 		connection = DbUtil.getConnection();
 	}
 
 	public Calendario getCalendario(String userId) {
-		PreparedStatement preparedStatement = null;
 		String fechaI, fechaF, descripcion, estado;
 		try {
 			Statement statement = connection.createStatement();
@@ -33,7 +33,7 @@ public class CalendarioDao {
 				return calendario;
 			}
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
@@ -53,9 +53,10 @@ public class CalendarioDao {
 				Calendario calendario = new Calendario(fechaIni, fechaFin, descripcion, estado, dniUsuario, dniRH);
 				lista.add(calendario);
 			}
+			rs.close();
 			return lista;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
@@ -72,8 +73,9 @@ public class CalendarioDao {
 			preparedStatement.setString(5, calendario.getDniEmp());
 			preparedStatement.setString(6, calendario.getDniRh());
 			preparedStatement.executeUpdate();
+			preparedStatement.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 	}
 

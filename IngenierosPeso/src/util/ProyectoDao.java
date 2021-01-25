@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 
 import clases.Proyecto;
 
 public class ProyectoDao {
 
 	private Connection connection;
+	static final Logger log = Logger.getLogger(DbUtil.class);
 
 	public ProyectoDao() {
 		connection = DbUtil.getConnection();
@@ -38,9 +40,7 @@ public class ProyectoDao {
 			preparedStatement2.close();
 			
 		} catch (SQLException e) {
-			
-			System.out.println(e.getMessage());
-
+			log.error(e.getMessage());
 		}
 	}
 	
@@ -63,9 +63,10 @@ public class ProyectoDao {
 				Proyecto proyecto = new Proyecto(idProy, titulo, fechaIni, fechaFin, descripcion);
 				lista.add(proyecto);
 			}
+			rs.close();
 			return lista;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
@@ -86,9 +87,10 @@ public class ProyectoDao {
 				Proyecto proyecto = new Proyecto(idProy, titulo, fechaIni, fechaFin, descripcion);
 				lista.add(proyecto);
 			}
+			rs.close();
 			return lista;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
@@ -104,8 +106,9 @@ public class ProyectoDao {
 				horas = rs.getInt("Horas");
 				return horas;
 			}
+			rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return 0;
 	}
@@ -123,8 +126,9 @@ public class ProyectoDao {
 				Proyecto proyecto = new Proyecto(idProy,titulo, fechaI, fechaF, desc);
 				return proyecto;
 			}
+			rs.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return null;
 	}
@@ -142,7 +146,7 @@ public class ProyectoDao {
 			preparedStatement.close();
 			
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 	}
 	
@@ -153,13 +157,10 @@ public class ProyectoDao {
 					"UPDATE mydb.Empleados_estan_proyectos SET Horas = Horas + " + horas
 					+ " WHERE Proyectos_idProyectos = " + idProy + " and Empleados_Trabajadores_DNI = '" + dniEmpleado
 					+ "';");
-			//preparedStatement.setInt(1, horas);
-			//preparedStatement.setInt(2, idProy);
-			//preparedStatement.setString(3, dniEmpleado);
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
 	}
 	
@@ -170,13 +171,8 @@ public class ProyectoDao {
 			preparedStatement.setInt(1, idProyect);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			log.error(e.getMessage());
 		}
-	}
-	
-	
-	public void actualiza() {
-		
 	}
 	
 }

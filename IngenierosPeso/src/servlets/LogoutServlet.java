@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
+
+import util.DbUtil;
 
 /**
  * Servlet implementation class logoutServlet
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Logout")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger log = Logger.getLogger(DbUtil.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,6 +38,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		log.info("Usuario ha cerrado sesión.");
 	}
 
 	/**

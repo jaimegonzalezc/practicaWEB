@@ -8,18 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import clases.User;
+import util.DbUtil;
 import util.UserDao;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger log = Logger.getLogger(DbUtil.class);
 
     public LoginServlet() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 
@@ -29,24 +33,23 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         UserDao dao = new UserDao(); 
         String userValidate = dao.logInAuthentication(dni, password); 
-        System.out.println(dao.getUser(dni).getApellidos());
-        System.out.println(userValidate);
+        User usuario = dao.getUser(dni);
+		request.setAttribute("nombre", usuario.getNombre()); 
+    	request.setAttribute("dni", dni);
+        
         if(userValidate.equals("TEC"))
         {
-	        User usuario = dao.getUser(dni);
-			request.setAttribute("nombre", usuario.getNombre()); 
-        	request.setAttribute("dni", dni); 
             request.getRequestDispatcher("/menu.jsp").forward(request, response);
+            log.info("Ha iniciado sesión el técnico "+dni);
         }
         else if(userValidate.equals("RRHH")) {
-        	User usuario = dao.getUser(dni);
-			request.setAttribute("nombre", usuario.getNombre()); 
-        	request.setAttribute("dni", dni); 
             request.getRequestDispatcher("/menurh.jsp").forward(request, response);
+            log.info("Ha iniciado sesión el usuario de recursos humanos "+dni);
         }
         else {
         	request.setAttribute("errMessage", userValidate); 
             request.getRequestDispatcher("/login.jsp").forward(request, response);
+            log.info("Error al iniciar sesión");
         }
 	}
 

@@ -2,6 +2,7 @@ package servlets;
 
 
 import clases.Empresa;
+import util.DbUtil;
 import util.EmpresaDao;
 import java.io.IOException;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 
 
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Empresa")
 public class EmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger log = Logger.getLogger(DbUtil.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,9 +55,11 @@ public class EmpresaServlet extends HttpServlet {
 			Empresa empresa = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
 			dao.addEmpresa(empresa);
             request.getRequestDispatcher("gestionempresa.jsp").forward(request, response);
+            log.info("Dada de alta una nueva empresa.");
 		} else if(action.equals("elimina")) {
 			dao.deleteEmpresa(cif);
 			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
+			log.info("Eliminada empresa "+cif);
 		} else if(action.equals("editar")) {
 			String nombre = (String) request.getParameter("nombre");
 			String direccion = (String) request.getParameter("direccion");
@@ -65,6 +70,7 @@ public class EmpresaServlet extends HttpServlet {
 			Empresa empr = new Empresa(cif,nombre,direccion,cp,ciudad,provincia,telefono);
 			dao.actualizaEmpresa(empr);
 			request.getRequestDispatcher("editaempresa.jsp").forward(request, response);
+			log.info("Han editado la empresa "+cif);
 		}
 	}
 

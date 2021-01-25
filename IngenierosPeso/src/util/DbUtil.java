@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DbUtil {
+import org.apache.log4j.Logger;
 
+public class DbUtil {
+	
+	static final Logger log = Logger.getLogger(DbUtil.class);
+	
     private static Connection connection = null;
 
     public static Connection getConnection() {
@@ -20,11 +24,12 @@ public class DbUtil {
             e.printStackTrace();
         }
         try {
+        	
             connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Conectado");
+            log.info("conectado");
+           
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            System.out.println("Error de conexión");
+            log.error(throwables.getMessage());
         }
         return connection;
     }

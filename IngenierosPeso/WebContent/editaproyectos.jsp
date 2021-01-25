@@ -74,27 +74,6 @@ String nombre = (String) request.getAttribute("nombre");
 	        
 	    }
 		
-		/* function cambiatitulo(i){
-			var titForm = "titulo"+i;
-			var titulo = document.getElementById(titForm);
-			nuevotit = titulo.value;
-		}
-		function cambiadesc(i){
-			var descForm = "descr"+i;
-			var descripcion = document.getElementById(descForm);
-			nuevodesc = descripcion.value;
-		}
-		function cambiafi(i){
-			var fiForm = "fi"+i;
-			var finicio = document.getElementById(fiForm);
-			nuevofi = finicio.value;
-		}
-		function cambiaff(i){
-			var ffForm = "ff"+i;
-			var ffin = document.getElementById(ffForm);
-			nuevoff = ffin.value;
-		} */
-		
 		function actualizar(i){
 					
 			var idForm = "idproy"+i;

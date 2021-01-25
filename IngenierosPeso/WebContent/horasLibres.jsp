@@ -52,12 +52,11 @@ String dni = (String) request.getAttribute("dni");
 					<label>Introduzca la hora de fin </label>
 					<input type="text"
 					name="horaFin" required>
-					<br><input type="Enviar" name="horaslibres"
-					value=submit>
+					<br><input type="submit" name="horaslibres"
+					value="Enviar">
 			</form>
 
 		</div>
-	</div>
 
 
 	<footer class="py-5 bg-dark">

@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.Calendario;
 import util.CalendarioDao;
+import util.DbUtil;
 
 @WebServlet("/CalendarioServlet")
 public class CalendarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger log = Logger.getLogger(DbUtil.class);
 
 	public CalendarioServlet() {
 		super();
@@ -22,28 +25,22 @@ public class CalendarioServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
+		String dni = (String) request.getParameter("dni");
+		request.setAttribute("dni", dni);
 
 		if (action.equals("getcalendario")) {
-			String dni = (String) request.getParameter("dni");
-			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("consultarCalendario.jsp").forward(request, response);
 		}
 		else if (action.equals("diaslibres")) {
-			String dni = (String) request.getParameter("dni");
-			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("diasLibres.jsp").forward(request, response);
 		}
 		else if (action.equals("horaslibres")) {
-			String dni = (String) request.getParameter("dni");
-			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("horasLibres.jsp").forward(request, response);
 		}
 		else if (action.equals("vacaciones")) {
-			String dni = (String) request.getParameter("dni");
-			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("vacaciones.jsp").forward(request, response);
 		} else {
-			System.out.println("Error");
+			log.error("Error de calendario.");
 		}
 	}
 
@@ -58,7 +55,8 @@ public class CalendarioServlet extends HttpServlet {
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
-			request.getRequestDispatcher("menu.jsp").forward(request, response);		
+			request.getRequestDispatcher("menu.jsp").forward(request, response);
+			log.info("Usuario "+dniUser+" pide dia libre.");
 		}
 		else if (request.getParameter("horaslibres") != null) {
 			String fecha = request.getParameter("FechaIni");
@@ -72,7 +70,8 @@ public class CalendarioServlet extends HttpServlet {
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
-			request.getRequestDispatcher("menu.jsp").forward(request, response);		
+			request.getRequestDispatcher("menu.jsp").forward(request, response);
+			log.info("Usuario "+dniUser+" pide horas libres.");
 		}
 		else if (request.getParameter("vacaciones") != null) {
 			String fechaIni = request.getParameter("FechaIni");
@@ -82,9 +81,10 @@ public class CalendarioServlet extends HttpServlet {
 			cal.insertCalendario(calendario);
 			request.setAttribute("dni", dniUser);
 			request.setAttribute("dialibre", true);
-			request.getRequestDispatcher("menu.jsp").forward(request, response);		
+			request.getRequestDispatcher("menu.jsp").forward(request, response);
+			log.info("Usuario "+dniUser+" pide vacaciones.");
 		} else {
-			System.out.println("Error");
+			log.error("Error al procesar pedida de calendario.");
 		}
 		
 	}
