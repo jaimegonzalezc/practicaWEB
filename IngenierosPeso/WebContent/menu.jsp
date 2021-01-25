@@ -15,7 +15,7 @@
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 <%
-String dni = (String) request.getAttribute("dni");
+String dni = (String) request.getAttribute("dniUser");
 UserDao dao = new UserDao();
 String nombre = dao.getUser(dni).getNombre();
 Boolean dialibre = false;

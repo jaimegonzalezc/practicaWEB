@@ -26,20 +26,33 @@ public class CalendarioServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		String dni = (String) request.getParameter("dni");
-		request.setAttribute("dni", dni);
+		
 
 		if (action.equals("getcalendario")) {
+			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("consultarCalendario.jsp").forward(request, response);
 		}
 		else if (action.equals("diaslibres")) {
+			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("diasLibres.jsp").forward(request, response);
 		}
 		else if (action.equals("horaslibres")) {
+			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("horasLibres.jsp").forward(request, response);
 		}
 		else if (action.equals("vacaciones")) {
+			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("vacaciones.jsp").forward(request, response);
-		} else {
+		} 
+		else if(action.equals("estado")) {
+			CalendarioDao calDao = new CalendarioDao(); 
+			String fini = (String) request.getParameter("fini");
+			String est = (String) request.getParameter("est");
+			String dniRH = (String) request.getParameter("dniRH");
+			calDao.cambiarEstado(dni, dniRH, fini, est);
+			request.getRequestDispatcher("aprobarCalendario.jsp").forward(request, response);
+		}
+		else {
 			log.error("Error de calendario.");
 		}
 	}

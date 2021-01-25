@@ -48,3 +48,66 @@ INFO    2021-01-25 19:21:39,803 [http-nio-8080-exec-15] util.DbUtil  - conectado
 INFO    2021-01-25 19:21:39,804 [http-nio-8080-exec-15] util.DbUtil  - El usuario 09192134T ha fichado horas en el proyecto 6
 INFO    2021-01-25 20:55:53,862 [http-nio-8080-exec-8] util.DbUtil  - conectado
 INFO    2021-01-25 20:55:53,862 [http-nio-8080-exec-9] util.DbUtil  - conectado
+INFO    2021-01-25 22:42:23,292 [http-nio-8080-exec-2] util.DbUtil  - conectado
+INFO    2021-01-25 22:43:27,279 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 23:02:10,757 [http-nio-8080-exec-13] util.DbUtil  - conectado
+INFO    2021-01-25 23:03:12,986 [http-nio-8080-exec-19] util.DbUtil  - conectado
+INFO    2021-01-25 23:03:28,137 [http-nio-8080-exec-20] util.DbUtil  - conectado
+INFO    2021-01-25 23:03:28,203 [http-nio-8080-exec-20] util.DbUtil  - conectado
+INFO    2021-01-25 23:03:33,069 [http-nio-8080-exec-22] util.DbUtil  - conectado
+INFO    2021-01-25 23:03:33,097 [http-nio-8080-exec-22] util.DbUtil  - conectado
+INFO    2021-01-25 23:05:44,783 [http-nio-8080-exec-7] util.DbUtil  - conectado
+INFO    2021-01-25 23:05:44,930 [http-nio-8080-exec-7] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:06:32,143 [http-nio-8080-exec-1] util.DbUtil  - conectado
+INFO    2021-01-25 23:06:32,253 [http-nio-8080-exec-1] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:06:35,081 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 23:22:17,076 [http-nio-8080-exec-15] util.DbUtil  - conectado
+INFO    2021-01-25 23:22:17,109 [http-nio-8080-exec-15] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:22:30,839 [http-nio-8080-exec-19] util.DbUtil  - conectado
+INFO    2021-01-25 23:23:34,508 [http-nio-8080-exec-25] util.DbUtil  - conectado
+INFO    2021-01-25 23:23:34,642 [http-nio-8080-exec-25] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:32:51,017 [http-nio-8080-exec-23] util.DbUtil  - conectado
+INFO    2021-01-25 23:32:51,122 [http-nio-8080-exec-23] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:33:06,909 [http-nio-8080-exec-30] util.DbUtil  - conectado
+INFO    2021-01-25 23:33:06,912 [http-nio-8080-exec-30] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:33:47,934 [http-nio-8080-exec-29] util.DbUtil  - conectado
+INFO    2021-01-25 23:33:47,964 [http-nio-8080-exec-29] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:33:53,940 [http-nio-8080-exec-24] util.DbUtil  - conectado
+INFO    2021-01-25 23:37:10,060 [http-nio-8080-exec-35] util.DbUtil  - conectado
+INFO    2021-01-25 23:39:21,789 [http-nio-8080-exec-36] util.DbUtil  - conectado
+INFO    2021-01-25 23:39:21,862 [http-nio-8080-exec-36] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:39:23,999 [http-nio-8080-exec-39] util.DbUtil  - conectado
+INFO    2021-01-25 23:42:29,870 [http-nio-8080-exec-33] util.DbUtil  - conectado
+INFO    2021-01-25 23:42:29,956 [http-nio-8080-exec-33] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:45:49,175 [http-nio-8080-exec-33] util.DbUtil  - conectado
+INFO    2021-01-25 23:45:49,248 [http-nio-8080-exec-33] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:45:51,281 [http-nio-8080-exec-36] util.DbUtil  - conectado
+INFO    2021-01-25 23:50:00,417 [http-nio-8080-exec-5] util.DbUtil  - conectado
+INFO    2021-01-25 23:50:00,454 [http-nio-8080-exec-5] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:50:02,865 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 23:50:08,387 [http-nio-8080-exec-2] util.DbUtil  - conectado
+ERROR   2021-01-25 23:50:08,414 [http-nio-8080-exec-2] util.DbUtil  - No value specified for parameter 4
+INFO    2021-01-25 23:50:08,437 [http-nio-8080-exec-2] util.DbUtil  - conectado
+INFO    2021-01-25 23:50:58,181 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 23:50:58,209 [http-nio-8080-exec-8] util.DbUtil  - Ha iniciado sesión el usuario de recursos humanos 00658957F
+INFO    2021-01-25 23:51:01,267 [http-nio-8080-exec-4] util.DbUtil  - conectado
+INFO    2021-01-25 23:51:06,060 [http-nio-8080-exec-9] util.DbUtil  - conectado
+INFO    2021-01-25 23:51:06,100 [http-nio-8080-exec-9] util.DbUtil  - conectado
+INFO    2021-01-25 23:51:51,702 [http-nio-8080-exec-10] util.DbUtil  - conectado
+INFO    2021-01-25 23:51:51,727 [http-nio-8080-exec-10] util.DbUtil  - conectado
+INFO    2021-01-25 23:52:21,179 [http-nio-8080-exec-13] util.DbUtil  - conectado
+INFO    2021-01-25 23:52:21,200 [http-nio-8080-exec-13] util.DbUtil  - conectado
+INFO    2021-01-25 23:54:53,910 [http-nio-8080-exec-5] util.DbUtil  - conectado
+INFO    2021-01-25 23:54:53,988 [http-nio-8080-exec-5] util.DbUtil  - conectado
+INFO    2021-01-25 23:55:44,572 [http-nio-8080-exec-2] util.DbUtil  - conectado
+INFO    2021-01-25 23:55:45,660 [http-nio-8080-exec-2] util.DbUtil  - conectado
+INFO    2021-01-25 23:56:32,946 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 23:56:33,104 [http-nio-8080-exec-8] util.DbUtil  - conectado
+INFO    2021-01-25 23:57:42,978 [http-nio-8080-exec-9] util.DbUtil  - conectado
+INFO    2021-01-25 23:57:43,002 [http-nio-8080-exec-9] util.DbUtil  - conectado
+INFO    2021-01-25 23:59:08,995 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 23:59:09,164 [http-nio-8080-exec-6] util.DbUtil  - conectado
+INFO    2021-01-25 23:59:58,118 [http-nio-8080-exec-11] util.DbUtil  - conectado
+INFO    2021-01-25 23:59:58,260 [http-nio-8080-exec-11] util.DbUtil  - conectado
+INFO    2021-01-25 23:59:58,261 [http-nio-8080-exec-11] util.DbUtil  - Ha iniciado sesión el técnico 29178375T
+INFO    2021-01-26 00:00:07,482 [http-nio-8080-exec-14] util.DbUtil  - conectado

@@ -40,7 +40,6 @@ public class UserDao {
 	}
 
 	public User getUser(String userId) {
-		PreparedStatement preparedStatement = null;
 		String dniDB, passwordDB, nombreDB, apellidoDB, correoDB, departamentoDB;
 		int numeroDB;
 		try {
@@ -102,7 +101,6 @@ public class UserDao {
 	}
 
 	public String logInAuthentication(String userId, String pswd) {
-		PreparedStatement preparedStatement = null;
 		String dniDB = "";
 		String passwordDB = "";
 		String depart ="";

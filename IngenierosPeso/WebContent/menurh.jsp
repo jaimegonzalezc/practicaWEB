@@ -14,7 +14,8 @@
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 <%
-String dni = (String) request.getAttribute("dni");
+String dniUser = (String) request.getAttribute("dniUser");
+System.out.println(dniUser);
 String nombre = (String) request.getAttribute("nombre");
 
 %>
@@ -50,7 +51,7 @@ String nombre = (String) request.getAttribute("nombre");
 
 			<p class="lead">Desde este menú principal, podrás gestionar todas
 				las funcionalidades del sistema.</p>
-			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>
+			<a href="aprobarCalendario.jsp?dniUser=<%= dniUser %>" class="btn btn-success btn-lg">Notificaciones</a>
 		</header>
 		<div class="row text-center">
 
