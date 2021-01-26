@@ -40,11 +40,6 @@
 
 	<div class="container">
 		<header class="jumbotron my-2">
-			<!--  <h1 class="display-3">Bienvenido personal de recursos humanos</h1>  <!-- Bootstrap core JavaScript
-			
-			<p class="lead">Desde este menú principal, podrás gestionar todas
-				las funcionalidades del sistema.</p>
-			<a href="#" class="btn btn-success btn-lg">Notificaciones</a>-->
 		</header> 
 		<div class="row text-center">
 

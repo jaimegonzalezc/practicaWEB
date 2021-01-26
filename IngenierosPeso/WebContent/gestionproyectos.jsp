@@ -75,18 +75,6 @@ String nombre = (String) request.getAttribute("nombre");
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 mb-4">
-				<div class="card h-100">
-					<div class="card-body">
-						<h4 class="card-title">Borra proyectos</h4>
-						<p class="card-text">Aquí podrás dar de baja a los proyectos que se han acabado.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-success">¡Baja!</a>
-					</div>
-				</div>
-			</div>
-
 		</div>
 
 	</div>

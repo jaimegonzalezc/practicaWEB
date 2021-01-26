@@ -45,7 +45,7 @@ String dni = (String) request.getAttribute("dni");
 			<label>Introduzca el día de inicio de las vacaciones en
 				formato yyyy-mm-dd</label> <input type=hidden name="dni" value=<%=dni%>>
 			<input type="text" name="FechaIni" required> <br><label>Introduzca
-				el día de inicio de las vacaciones en formato yyyy-mm-dd</label> <input
+				el día de fin de las vacaciones en formato yyyy-mm-dd</label> <input
 				type="text" name="FechaFin" required> <br><input type="submit"
 				name="vacaciones" value=Enviar>
 		</form>

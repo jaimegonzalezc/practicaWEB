@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import='java.util.ArrayList, util.CalendarioDao'%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,6 +18,8 @@
 String dniUser = (String) request.getAttribute("dniUser");
 System.out.println(dniUser);
 String nombre = (String) request.getAttribute("nombre");
+CalendarioDao caldao = new CalendarioDao();
+
 
 %>
 </head>
@@ -51,7 +54,7 @@ String nombre = (String) request.getAttribute("nombre");
 
 			<p class="lead">Desde este menú principal, podrás gestionar todas
 				las funcionalidades del sistema.</p>
-			<a href="aprobarCalendario.jsp?dniUser=<%= dniUser %>" class="btn btn-success btn-lg">Notificaciones</a>
+			<a href="aprobarCalendario.jsp?dniUser=<%= dniUser %>" class="btn btn-success btn-lg">Notificaciones (<%= caldao.pendientesAprobar() %>)</a>
 		</header>
 		<div class="row text-center">
 

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import='util.UserDao'%>
+<%@page import='util.UserDao, util.CalendarioDao'%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,6 +28,9 @@ if (dialibre) {
 </script>
 <%
 }
+
+CalendarioDao caldao = new CalendarioDao();
+
 %>
 </head>
 
@@ -94,7 +97,7 @@ if (dialibre) {
 					<div class="card-footer">
 						<button class="btn btn-success"
 							onClick="location.href='CalendarioServlet?action=getcalendario&dni=<%=dni%>';">
-							Consultar Calendario!</button>
+							Consultar Calendario! (<%= caldao.estadoCal(dni)%>)</button>
 					</div>
 				</div>
 			</div>
@@ -123,7 +126,7 @@ if (dialibre) {
 					</div>
 					<div class="card-footer">
 						<button class="btn btn-success"
-							onClick="location.href='CalendarioServlet?action=getcalendario&dni=<%=dni%>';">
+							onClick="location.href='CalendarioServlet?action=horaslibres&dni=<%=dni%>';">
 							Notificar ausencia!</button>
 					</div>
 				</div>

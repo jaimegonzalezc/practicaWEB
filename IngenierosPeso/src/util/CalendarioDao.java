@@ -117,5 +117,40 @@ public class CalendarioDao {
 			log.error(e.getMessage());
 		}
 	}
+	
+	public int pendientesAprobar() {
+		int total = 0;
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM mydb.Calendario WHERE Estado='Pendiente';");
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			log.error(e.getMessage());
+		}
+		return total;
+	}
+	
+	
+	public int estadoCal(String dni) {
+		int total = 0;
+		String est;
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM mydb.Calendario WHERE Estado='Pendiente';");
+			if(rs.next()) {
+				est = rs.getString(1);
+				if(!est.equals("Pendiente")) {
+					total++;
+				}
+			}
+			rs.close();
+		} catch (SQLException e) {
+			log.error(e.getMessage());
+		}
+		return total;
+	}
 
 }
