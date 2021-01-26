@@ -21,6 +21,7 @@ public class ProyectoDao {
 
 	public void addProyecto(Proyecto proyecto, String cif, int id) {
 		try {
+			
 			PreparedStatement preparedStatement1 = connection.prepareStatement(
 					"insert into mydb.Proyectos (idProyectos, Titulo,Descripcion,FechaIni,FechaFin) values (?,?,?,?,?)");
 			PreparedStatement preparedStatement2 = connection.prepareStatement(
@@ -167,9 +168,14 @@ public class ProyectoDao {
 	public void deleteProyecto(int idProyect) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("delete from mydb.Proyectos where idProyectos=?");
+			PreparedStatement preparedStatement2 = connection.prepareStatement("delete from mydb.empresa_tiene_proyectos where Proyectos_idProyectos=?");
 			// Parameters start with 1  
 			preparedStatement.setInt(1, idProyect);
+			preparedStatement2.setInt(1, idProyect);
+			preparedStatement2.executeUpdate();
 			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			preparedStatement2.close();
 		} catch (SQLException e) {
 			log.error(e.getMessage());
 		}

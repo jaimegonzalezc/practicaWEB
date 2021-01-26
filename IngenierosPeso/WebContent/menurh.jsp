@@ -15,7 +15,7 @@
 	rel="stylesheet">
 <link href="menuStyle/css/heroic-features.css" rel="stylesheet">
 <%
-String dniUser = (String) request.getAttribute("dniUser");
+String dniUser = (String) request.getAttribute("dni");
 System.out.println(dniUser);
 String nombre = (String) request.getAttribute("nombre");
 CalendarioDao caldao = new CalendarioDao();
@@ -61,12 +61,12 @@ CalendarioDao caldao = new CalendarioDao();
 			<div class="col-lg-3 col-md-6 mb-4">
 				<div class="card h-100">
 					<div class="card-body">
-						<h4 class="card-title">Atender peticiones de empleados</h4>
-						<p class="card-text">Aquí podrás gestionar las peticiones
-							realizadas por los empleados.</p>
+						<h4 class="card-title">Empleados</h4>
+						<p class="card-text">Aquí podrás actualizar, modificar y ver
+							la información de los empleados.</p>
 					</div>
 					<div class="card-footer">
-						<a href="gestionaempleados.jsp" class="btn btn-success">Gestionar peticiones!</a>
+						<a href="gestionaempleados.jsp" class="btn btn-success">Gestionar empleados!</a>
 					</div>
 				</div>
 			</div>

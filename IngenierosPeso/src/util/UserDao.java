@@ -117,6 +117,15 @@ public class UserDao {
 					
 				}
 				rs.close();
+			} else if((userId.equals("Admin"))||(userId.equals("Pruebas"))) {
+				ResultSet rs = statement.executeQuery("SELECT * FROM mydb.Usuarios where DNI = '" + userId + "';");
+				while (rs.next()) {
+					dniDB = rs.getString("DNI");
+					passwordDB = rs.getString("Contraseña");
+					depart = rs.getString("Departamento");
+					
+				}
+				rs.close();
 			}
 			if (pswd.equals(passwordDB)) {
 				if(depart.equals("Recursos Humanos")) {

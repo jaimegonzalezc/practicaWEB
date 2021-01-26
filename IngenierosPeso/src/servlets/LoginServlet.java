@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         String userValidate = dao.logInAuthentication(dni, password); 
         User usuario = dao.getUser(dni);
 		request.setAttribute("nombre", usuario.getNombre()); 
-    	request.setAttribute("dniUser", dni);
+    	request.setAttribute("dni", dni);
         
         if(userValidate.equals("TEC"))
         {

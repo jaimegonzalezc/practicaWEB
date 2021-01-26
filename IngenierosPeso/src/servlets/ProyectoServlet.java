@@ -67,9 +67,9 @@ public class ProyectoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-
         if(action.equals("alta")) {
 			try {
+				
 				String Titulo = (String) request.getParameter("Titulo");
 				String FIni = (String) request.getParameter("FI");
 				String FFin = (String) request.getParameter("FF");

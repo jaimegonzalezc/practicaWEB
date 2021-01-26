@@ -136,15 +136,11 @@ public class CalendarioDao {
 	
 	public int estadoCal(String dni) {
 		int total = 0;
-		String est;
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM mydb.Calendario WHERE Estado='Pendiente';");
+			ResultSet rs = statement.executeQuery("SELECT COUNT(*) FROM mydb.Calendario WHERE Estado='Pendiente' AND Empleado_Usuarios_DNI='"+dni+"';");
 			if(rs.next()) {
-				est = rs.getString(1);
-				if(!est.equals("Pendiente")) {
-					total++;
-				}
+				total = rs.getInt(1);
 			}
 			rs.close();
 		} catch (SQLException e) {

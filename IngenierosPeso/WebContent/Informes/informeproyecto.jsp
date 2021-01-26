@@ -75,7 +75,7 @@ String nombre = (String) request.getAttribute("nombre");
 
 		<div class="container">
 
-			<input type="button" value="Descargar" onclick="Descargar('Empresas.csv')">
+			<input type="button" value="Descargar" onclick="Descargar('Proyectos.csv')">
 
 		</div>
 	</div>
