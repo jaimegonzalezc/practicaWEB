@@ -35,9 +35,9 @@ Contiene los siguientes elementos:
 ```
 UML/
  |
- |__ Ingenieros_peso/
- |__ RRHHUseCase.png
- |__ empleadosUseCase.png
+ |___ Ingenieros_peso/
+ |___ RRHHUseCase.png
+ |___ empleadosUseCase.png
 ```
 
 La carpeta `Ingenieros_peso/` contiene todo el paquete UML
@@ -53,10 +53,10 @@ Esta carpeta contiene los siguientes elementos:
 ```
 database/
   |
-  |____ Ingenieros.sql
-  |____ Modelo.png
-  |____ ModeloSQL.mwb
-  |____ ModeloSQL.mwb.bak
+  |___ Ingenieros.sql
+  |___ Modelo.png
+  |___ ModeloSQL.mwb
+  |___ ModeloSQL.mwb.bak
 ```
 
 El documento `Ingenieros.sql` es el script _SQL_ que se encarga de inicializar la base de datos, las tablas y los disparadores, así como instanciar los datos de prueba
